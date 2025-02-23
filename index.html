@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 设置为英文 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="language-selector">
+        <label for="language">Select Language:</label>
+        <select id="language">
+            <option value="en" selected>English</option> <!-- English 放在第一位 -->
+            <option value="zh">中文</option>
+            <option value="ar">العربية</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">Input JSON Text</h2>
+            <textarea id="inputJson" rows="20" placeholder="Please enter unformatted JSON text"></textarea>
+            <button id="formatJsonButton" class="action-button">Format JSON</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">Upload JSON File</h2>
+                <label id="fileLabel" for="jsonFile">Choose File</label> <!-- 选择文件的标签 -->
+                <input type="file" id="jsonFile" accept=".json" style="display: none;"> <!-- 隐藏实际的文件输入 -->
+                <button id="uploadButton" class="action-button" onclick="document.getElementById('jsonFile').click();">Choose File</button> <!-- 自定义按钮 -->
+                <p id="fileStatus">No file selected</p> <!-- 文件状态文本 -->
+                <button id="uploadJsonButton" class="action-button">Upload and Format</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">Formatted JSON Text</h2>
+            <pre id="outputJson"></pre>
+            <button id="copyButton" class="action-button">Copy to Clipboard</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">Download formatted file:</p> <a id="formattedFileLink" href="#" download></a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

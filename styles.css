@@ -1,0 +1,65 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-section, .output-section {
+    width: 48%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+textarea.error {
+    border-color: red;
+}
+
+pre {
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    max-height: 400px; /* 设置最大高度 */
+    overflow-y: auto; /* 允许垂直滚动 */
+    margin-bottom: 40px; /* 为复制按钮留出空间 */
+}
+
+button {
+    margin: 5px 0;
+}
+
+.upload-section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+#copyButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
