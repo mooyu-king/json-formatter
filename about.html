@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About json-formatter.app</title>
+    <style>
+        /* 内容框样式 */
+        .content-box {
+            background-color: #e0f7fa; /* 默认蓝色背景 */
+            border-radius: 8px; /* 圆角边框 */
+            margin: 20px 0; /* 上下边距 */
+            padding: 20px; /* 内边距 */
+            display: flex; /* 使用 flexbox 布局 */
+            justify-content: space-between; /* 两端对齐 */
+            align-items: flex-start; /* 顶部对齐 */
+        }
+
+        h2.content-title {
+            font-size: 1.5em; /* 增大字体 */
+            font-weight: bold; /* 加粗 */
+            margin: 0; /* 取消默认边距 */
+            margin-bottom: 10px; /* 标题与内容之间的间距 */
+        }
+
+        h3 {
+            margin: 10px 0 5px; /* 小标题的间距 */
+            font-size: 1.2em; /* 小标题字体大小 */
+        }
+
+        p {
+            margin: 0 0 15px; /* 段落底部边距 */
+            line-height: 1.6; /* 行间距 */
+            text-align: justify; /* 文本两端对齐 */
+        }
+
+        /* 具体的背景颜色 */
+        .about {
+            background-color: #b2ebf2; /* 浅蓝色 */
+        }
+
+        .features {
+            background-color: #80deea; /* 中蓝色 */
+        }
+
+        .usage {
+            background-color: #4dd0e1; /* 深蓝色 */
+        }
+
+        .faq {
+            background-color: #26c6da; /* 更深蓝色 */
+        }
+
+        /* 图片阴影效果 */
+        .shadow {
+            border-radius: 8px; /* 圆角 */
+            margin-left: 15px; /* 左侧边距 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            width: 100px; /* 固定宽度 */
+            height: auto; /* 自适应高度 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">About json-formatter.app</h2>
+            <p>json-formatter.app is a powerful online tool designed specifically for handling Json (JavaScript Object Notation) data. As Json has become the de facto standard for data interchange between web applications and APIs, having a reliable method to format and validate Json is essential for developers, data analysts, and anyone working with data in this format. json-formatter.app provides a comprehensive solution that goes beyond simple formatting, offering users a variety of functionalities that enhance the management and usability of Json data.</p>
+        </div>
+        <img src="final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">Website Features</h2>
+            <h3>Online Formatting</h3>
+            <p>The primary feature of json-formatter.app is its ability to format Json data automatically. When a user enters poorly formatted Json text, the tool transforms it into a neatly structured format. This makes it easier to read, making it significantly less challenging to locate specific elements and comprehend complex data structures.</p>
+            <h3>One-Click Copy</h3>
+            <p>Once the Json data is formatted, users can easily copy it with just one click. This functionality reduces the hassle of manually selecting the formatted text and ensures that users can quickly transfer the data where it is needed, whether in an application, document, or another tool.</p>
+            <h3>Uploading Corrupted Files</h3>
+            <p>json-formatter.app allows users to upload Json files that may contain formatting errors. This feature is particularly handy for those who receive or work with external Json data that may not be well-formed. The tool analyzes the uploaded file, identifies errors, and facilitates corrections, enabling users to restore disorganized or corrupted Json data efficiently.</p>
+            <h3>Downloading Formatted Files</h3>
+            <p>Once the Json data has been formatted and verified, users can download it with a single click. This feature saves the formatted Json directly to their local device in a clean and organized format, making it ready for use in projects, APIs, or further analysis.</p>
+            <h3>Mobile Access</h3>
+            <p>json-formatter.app is fully responsive, allowing users to access and utilize the tool on mobile devices seamlessly. This is essential for those working on the go or those who prefer using smartphones and tablets. The mobile version retains the full functionality of the desktop version, ensuring that users can format, validate, and retrieve Json data from anywhere.</p>
+        </div>
+        <img src="Features.jpg" alt="Features" class="shadow">
+    </div>
+
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">How to Use json-formatter.app</h2>
+            <p>Using json-formatter.app is straightforward. Here’s a step-by-step guide to help you get started:</p>
+            <ol>
+                <li><strong>Access the Website</strong>: Open your web browser and navigate to <a href="https://json-formatter.app/">json-formatter.app</a>.</li>
+                <li><strong>Input Json Data</strong>: You can either copy and paste your Json text directly into the provided input area or choose to upload a Json file from your device.</li>
+                <li><strong>Format the Json</strong>: After entering or uploading your Json data, click the “Format” button. The tool will analyze your Json text and automatically format it into a readable structure.</li>
+                <li><strong>Validate the Json</strong>: To check for errors, you can click the “Validate” button. The validator will check your Json data against the official specifications and highlight any issues, providing detailed error messages to help you resolve them.</li>
+                <li><strong>Copy and Download</strong>: Once you are satisfied with the formatting, you can use the one-click copy feature to transfer the formatted Json elsewhere or click the download button to save the formatted file to your local device.</li>
+                <li><strong>Explore Features</strong>: Utilize additional functionalities such as the tree view for easier navigation of nested objects or the image preview feature by hovering over image URLs in your Json data.</li>
+            </ol>
+        </div>
+        <img src="how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">Frequently Asked Questions</h2>
+            <p><strong>1. Is json-formatter.app free to use?</strong><br>Absolutely! json-formatter.app is a free tool that allows users to format and validate Json data without any fees or hidden costs.</p>
+            <p><strong>2. Do I need to create an account to access the features?</strong><br>No signup is necessary. Users can access all features of json-formatter.app without creating an account, ensuring a seamless and hassle-free experience.</p>
+            <p><strong>3. What types of errors can the validator detect?</strong><br>The Json validator can identify various issues, including missing commas, improperly closed braces, and invalid string formats. The tool highlights these errors and provides detailed descriptions to assist with corrections.</p>
+            <p><strong>4. Can I use json-formatter.app on my smartphone or tablet?</strong><br>Yes, json-formatter.app is mobile-friendly, allowing users to format and validate Json data on various devices, including smartphones and tablets.</p>
+            <p><strong>5. How does the tool handle corrupted Json files?</strong><br>Users can upload Json files containing errors, and the tool will analyze the structure, identify issues, and help correct them, restoring the data to a usable format.</p>
+            <p><strong>6. Is json-formatter.app compatible with various operating systems?</strong><br>Yes, json-formatter.app is compatible with all major operating systems, including Windows, macOS, and Linux, as well as various web browsers like Chrome, Firefox, Safari, and Edge.</p>
+            <p><strong>7. What conversion options are available?</strong><br>While the primary focus of json-formatter.app is formatting and validating Json, it also supports conversion tools that allow users to transform Json data into other formats such as XML, CSV, and YAML.</p>
+        </div>
+        <img src="FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+</body>
+</html>

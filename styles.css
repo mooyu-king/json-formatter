@@ -20,6 +20,13 @@ body {
     position: relative;
 }
 
+h1 {
+    text-align: center; /* 居中对齐 */
+    font-family: Arial, sans-serif; /* 黑体字体 */
+    font-weight: bold; /* 加粗 */
+    margin: 20px 0; /* 上下边距 */
+}
+
 h2 {
     font-size: 1.5em;
 }

@@ -4,11 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Formatter Tool</title>
+    <link rel="icon" href="final-logo.jpg" type="image/jpeg"> <!-- 添加 Favicon -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 设置页面的背景色 */
+        body {
+            background-color: #a0e0e0; /* 新添加的蓝绿色背景，接近#b2ebf2和#80deea */
+            margin: 0; /* 去掉默认的边距 */
+            font-family: Arial, sans-serif; /* 设置字体 */
+        }
+
+        /* 添加标题样式 */
+        h1 {
+            text-align: center; /* 居中对齐 */
+            font-family: Arial, sans-serif; /* 黑体字体 */
+            font-weight: bold; /* 加粗 */
+            margin: 20px 0; /* 上下边距 */
+            display: flex; /* 使用 Flexbox 来排版图标和文本 */
+            align-items: center; /* 垂直居中对齐 */
+            justify-content: center; /* 水平居中对齐 */
+        }
+
+        h1 img {
+            width: 40px; /* 设置图标宽度 */
+            height: 40px; /* 设置图标高度，保持比例 */
+            margin-right: 10px; /* 标题文本和图标之间的间距 */
+            border-radius: 50%; /* 圆角处理 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+            background: linear-gradient(135deg, #00c6ff, #0072ff); /* 渐变边缘 */
+            padding: 2px; /* 内边距，确保背景色显示在圆角内 */
+        }
+
+        /* 为选择语言和输入框增加间距 */
+        .language-selector {
+            margin-bottom: 5px; /* 增加与输入框之间的间距 */
+        }
+
+        .input-section {
+            margin-top: 2px; /* 可选：增加输入部分的顶部间距 */
+        }
+
+        /* iframe 样式 */
+        .about-frame {
+            width: 100%;
+            height: 600px; /* 设置适当的高度 */
+            border: none; /* 无边框 */
+            margin-top: 20px; /* 上边距 */
+        }
+
+        /* 按钮样式 */
+        .action-button {
+            background-color: #0072ff; /* 设置按钮背景颜色 */
+            color: white; /* 字体颜色 */
+            border: none; /* 去掉边框 */
+            padding: 10px 20px; /* 内边距 */
+            border-radius: 5px; /* 圆角 */
+            cursor: pointer; /* 鼠标悬停变化 */
+            margin-top: 10px; /* 与上方元素的间距 */
+        }
+
+        .action-button:hover {
+            background-color: #005bb5; /* 悬停时的背景颜色 */
+        }
+    </style>
 </head>
 <body>
+    <h1><img src="final-logo.jpg" alt="Favicon"> Online JSON Formatter</h1> <!-- 在标题前添加图标 -->
+    
     <div class="language-selector">
-        <label for="language">Select Language:</label>
+        <label for="language"><strong>Select Language:</strong></label>
         <select id="language">
             <option value="en" selected>English</option> <!-- English 放在第一位 -->
             <option value="zh">中文</option>
@@ -39,6 +103,10 @@
             </div>
         </div>
     </div>
+
+    <!-- 使用 iframe 加载介绍文件 -->
+    <iframe src="about.html" class="about-frame"></iframe>
+
     <script src="script.js"></script>
 </body>
 </html>
