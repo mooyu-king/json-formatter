@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil de Formatage JSON</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="json-formatter.app is the top JSON formatter for easy formatting, validation, and beautification of JSON data for developers and analysts.">
+    <meta name="keywords" content="json formatter, format JSON, validate JSON, JSON tool, JSON beautifier">
+    <meta name="robots" content="nofollow">
+    <link rel="canonical" href="https://json-formatter.app/ch/">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="../final-logo.jpg" alt="Favicon"> Outil de formatage JSON en ligne</h1>
+    
+    <div class="language-selector">
+        <label for="language"><strong>Sélectionnez la langue :</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="../index.html">English</option>
+            <option value="../ch/index.html">中文</option>
+            <option value="index.html">Français</option>
+            <option value="../ar/index.html">العربية</option>
+        </select>
+    </div>    
+
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">Entrer le texte JSON</h2>
+            <textarea id="inputJson" rows="20" placeholder="Veuillez entrer du texte JSON non formaté"></textarea>
+            <button id="formatJsonButton" class="action-button blue-green-button">Formatter le JSON</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">Télécharger le fichier JSON</h2>
+                <label id="fileLabel" for="jsonFile">Choisir un fichier</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">Choisir un fichier</button>
+                <p id="fileStatus">Aucun fichier sélectionné</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">Télécharger et formatter</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">Texte JSON formaté</h2>
+            <pre id="outputJson"></pre>
+            <button id="copyButton" class="action-button blue-green-button">Copier dans le presse-papiers</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">Télécharger le fichier formaté :</p> 
+                <a id="formattedFileLink" href="#" download></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">À propos de json-formatter.app</h2>
+            <p>json-formatter.app est un outil en ligne puissant conçu spécifiquement pour traiter des données JSON (JavaScript Object Notation). Alors que JSON est devenu la norme de facto pour l'échange de données entre applications Web et API, avoir une méthode fiable pour formatter et valider JSON est essentiel pour les développeurs, les analystes de données et quiconque travaillant avec des données dans ce format.</p>
+        </div>
+        <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+    
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">Fonctionnalités du site</h2>
+            <h3>Formatage en ligne</h3>
+            <p>La principale fonctionnalité de json-formatter.app est sa capacité à formater automatiquement les données JSON. Lorsque l'utilisateur saisit un texte JSON mal formaté, l'outil le transforme en un format bien structuré, le rendant plus facile à lire et à comprendre.</p>
+            <h3>Copie en un clic</h3>
+            <p>Une fois les données JSON formatées, les utilisateurs peuvent facilement les copier en un clic, garantissant qu'ils peuvent rapidement transférer les données à l'endroit souhaité.</p>
+            <h3>Téléchargement de fichiers endommagés</h3>
+            <p>json-formatter.app permet aux utilisateurs de télécharger des fichiers JSON pouvant contenir des erreurs de formatage, analyse le fichier téléchargé et identifie les erreurs pour aider les utilisateurs à restaurer des données JSON désordonnées.</p>
+            <h3>Télécharger des fichiers formatés</h3>
+            <p>Une fois les données JSON formatées et validées, les utilisateurs peuvent télécharger le fichier JSON formaté en un seul clic.</p>
+            <h3>Accès mobile</h3>
+            <p>json-formatter.app est entièrement responsive, permettant aux utilisateurs d'accéder à l'outil sur divers appareils sans interruption.</p>
+        </div>
+        <img src="../Features.jpg" alt="Features" class="shadow">
+    </div>
+    
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">Comment utiliser json-formatter.app</h2>
+            <p>Utiliser json-formatter.app est très simple. Voici un guide étape par étape pour vous aider à démarrer :</p>
+            <ol>
+                <li><strong>Accéder au site</strong> : Ouvrez votre navigateur Web et accédez à <a href="https://json-formatter.app/">json-formatter.app</a>.</li>
+                <li><strong>Entrer les données JSON</strong> : Vous pouvez soit copier et coller votre texte JSON directement dans la zone d'entrée fournie, soit choisir de télécharger un fichier JSON depuis votre appareil.</li>
+                <li><strong>Formatter le JSON</strong> : Après avoir entré ou téléchargé vos données JSON, cliquez sur le bouton « Formatter ».</li>
+                <li><strong>Valider le JSON</strong> : Cliquez sur le bouton « Valider » pour vérifier les erreurs.</li>
+                <li><strong>Copier et télécharger</strong> : Une fois le formatage terminé, vous pouvez utiliser la fonction de copie en un clic ou le bouton de téléchargement.</li>
+                <li><strong>Explorer les fonctionnalités</strong> : Profitez des fonctionnalités supplémentaires, telles que la vue arborescente pour naviguer plus facilement dans les objets imbriqués.</li>
+            </ol>
+        </div>
+        <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+    
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">Questions Fréquemment Posées</h2>
+            <p><strong>1. Est-ce que json-formatter.app est gratuit ?</strong><br>Oui ! L'outil permet aux utilisateurs de formatter et de valider des données JSON gratuitement.</p>
+            <p><strong>2. Dois-je créer un compte pour accéder aux fonctionnalités ?</strong><br>Non, les utilisateurs peuvent accéder à toutes les fonctionnalités sans inscription.</p>
+            <p><strong>3. Quels types d'erreurs le validateur peut-il détecter ?</strong><br>Le validateur peut identifier divers problèmes, y compris les virgules manquantes et les accolades non fermées.</p>
+            <p><strong>4. Puis-je utiliser json-formatter.app sur mon smartphone ou ma tablette ?</strong><br>Oui, l'outil est adapté aux mobiles et prend en charge une variété d'appareils.</p>
+            <p><strong>5. Comment l'outil gère-t-il les fichiers JSON endommagés ?</strong><br>Après le téléchargement des fichiers JSON, l'outil les analysera et proposera des suggestions de correction.</p>
+            <p><strong>6. Est-il compatible avec différents systèmes d'exploitation ?</strong><br>Oui, il est compatible avec tous les principaux systèmes d'exploitation, y compris Windows, macOS et Linux.</p>
+            <p><strong>7. Quelles options de conversion sont disponibles ?</strong><br>L'outil prend en charge la conversion des données JSON en formats tels que XML, CSV et YAML.</p>
+        </div>
+        <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <script>
+        function changeLanguage() {
+            const languageSelector = document.getElementById('language');
+            const selectedValue = languageSelector.value;
+            window.location.href = selectedValue;
+        }
+    </script>
+</body>
+</html>

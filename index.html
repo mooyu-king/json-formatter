@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Formatter Tool</title>
     <link rel="icon" href="final-logo.jpg" type="image/jpeg">
-
     <meta name="description" content="json-formatter.app is the top JSON formatter for easy formatting, validation, and beautification of JSON data for developers and analysts.">
     <meta name="keywords" content="json formatter, format JSON, validate JSON, JSON tool, JSON beautifier">
     <meta name="robots" content="nofollow">
@@ -111,12 +110,20 @@
     
     <div class="language-selector">
         <label for="language"><strong>Select Language:</strong></label>
-        <select id="language">
-            <option value="en" selected>English</option>
-            <option value="zh">中文</option>
-            <option value="ar">العربية</option>
+        <select id="language" onchange="changeLanguage()">
+            <option value="index.html" selected>English</option>
+            <option value="ch/index.html">中文</option>
+            <option value="fr/index.html">Français</option>
+            <option value="ar/index.html">العربية</option>
         </select>
     </div>
+	<script>
+        function changeLanguage() {
+            const languageSelector = document.getElementById('language');
+            const selectedValue = languageSelector.value;
+            window.location.href = selectedValue;
+        }
+    </script>
     
     <div class="container">
         <div class="input-section">

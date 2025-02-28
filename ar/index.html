@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة تنسيق JSON</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="json-formatter.app is the top JSON formatter for easy formatting, validation, and beautification of JSON data for developers and analysts.">
+    <meta name="keywords" content="json formatter, format JSON, validate JSON, JSON tool, JSON beautifier">
+    <meta name="robots" content="nofollow">
+    <link rel="canonical" href="https://json-formatter.app/ch/">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="../final-logo.jpg" alt="Favicon"> أداة تنسيق JSON على الإنترنت</h1>
+
+    <div class="language-selector">
+        <label for="language"><strong>اختر اللغة:</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="../index.html">English</option>
+            <option value="../ch/index.html">中文</option>
+            <option value="../fr/index.html">Français</option>
+            <option value="index.html" selected>العربية</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">أدخل نص JSON</h2>
+            <textarea id="inputJson" rows="20" placeholder="يرجى إدخال نص JSON غير منسق"></textarea>
+            <button id="formatJsonButton" class="action-button blue-green-button">تنسيق JSON</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">تحميل ملف JSON</h2>
+                <label id="fileLabel" for="jsonFile">اختيار ملف</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">اختيار ملف</button>
+                <p id="fileStatus">لم يتم اختيار أي ملف</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">تحميل وتنسيق</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">نص JSON المنسق</h2>
+            <pre id="outputJson"></pre>
+            <button id="copyButton" class="action-button blue-green-button">نسخ إلى الحافظة</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">تنزيل الملف المنسق:</p> 
+                <a id="formattedFileLink" href="#" download></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">حول json-formatter.app</h2>
+            <p>json-formatter.app هي أداة قوية عبر الإنترنت مصممة للتعامل مع بيانات JSON (تنسيق كائنات جافا سكريبت). مع تحول JSON إلى معيار تبادل البيانات بين التطبيقات والواجهات (APIs)، من الضروري أن يكون لديك طريقة موثوقة لتنسيق والتحقق من JSON للمطورين ومحللي البيانات وأي شخص يعمل مع هذا التنسيق من البيانات.</p>
+        </div>
+        <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">ميزات الموقع</h2>
+            <h3>التنسيق عبر الإنترنت</h3>
+            <p>الوظيفة الرئيسية لـ json-formatter.app هي القدرة على تنسيق بيانات JSON تلقائيًا. عندما يدخل المستخدم نص JSON بشكل غير صحيح، يقوم الأداة بتحويله إلى بنية مرتبة، مما يجعل من السهل قراءته وفهمه.</p>
+            <h3>نسخ بنقرة واحدة</h3>
+            <p>بمجرد تنسيق بيانات JSON، يمكن للمستخدمين بسهولة نسخها بنقرة واحدة، مما يضمن أنهم يمكنهم نقل البيانات بسرعة إلى المكان المطلوب.</p>
+            <h3>تحميل الملفات التالفة</h3>
+            <p>تسمح json-formatter.app للمستخدمين بتحميل ملفات JSON التي قد تحتوي على أخطاء في التنسيق، وتحليل الملف المرفوع وتحديد الأخطاء لمساعدة المستخدمين على استعادة بيانات JSON الفوضوية.</p>
+            <h3>تنزيل الملفات المنسقة</h3>
+            <p>بمجرد تنسيق والتحقق من بيانات JSON، يمكن للمستخدمين تنزيل ملف JSON المنسق بنقرة واحدة.</p>
+            <h3>الوصول عبر الهاتف المحمول</h3>
+            <p>json-formatter.app متوافقة تمامًا مع الأجهزة المحمولة، مما يسمح للمستخدمين بالوصول إلى الأداة بسهولة على مجموعة متنوعة من الأجهزة.</p>
+        </div>
+        <img src="../Features.jpg" alt="Features" class="shadow">
+    </div>
+
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">كيفية استخدام json-formatter.app</h2>
+            <p>استخدام json-formatter.app بسيط للغاية. إليك دليل خطوة بخطوة لمساعدتك على البدء:</p>
+            <ol>
+                <li><strong>الوصول إلى الموقع</strong>: افتح متصفح الويب الخاص بك وانتقل إلى <a href="https://json-formatter.app/">json-formatter.app</a>.</li>
+                <li><strong>إدخال بيانات JSON</strong>: يمكنك إما نسخ ولصق نص JSON الخاص بك مباشرةً في منطقة الإدخال المقدمة أو اختيار تحميل ملف JSON من جهازك.</li>
+                <li><strong>تنسيق JSON</strong>: بعد إدخال أو تحميل بيانات JSON الخاصة بك، انقر فوق زر "التنسيق".</li>
+                <li><strong>التحقق من JSON</strong>: انقر فوق الزر "التحقق" للتحقق من الأخطاء.</li>
+                <li><strong>نسخ وتنزيل</strong>: بمجرد الانتهاء من التنسيق، يمكنك استخدام وظيفة النسخ بنقرة واحدة أو زر التنزيل.</li>
+                <li><strong>استكشاف الميزات</strong>: استخدم الميزات الإضافية، مثل عرض الشجرة للتنقل بسهولة في الكائنات المتداخلة.</li>
+            </ol>
+        </div>
+        <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">الأسئلة المتكررة</h2>
+            <p><strong>1. هل json-formatter.app مجانية للاستخدام؟</strong><br>نعم! يتيح الأداة للمستخدمين تنسيق والتحقق من بيانات JSON مجانًا.</p>
+            <p><strong>2. هل تحتاج إلى إنشاء حساب للوصول إلى الميزات؟</strong><br>لا حاجة للتسجيل، يمكن للمستخدمين الوصول إلى جميع الميزات بدون حساب.</p>
+            <p><strong>3. ما أنواع الأخطاء التي يمكن أن يكتشفها المُحقق؟</strong><br>يمكن للمحقق الكشف عن مجموعة متنوعة من المشاكل، بما في ذلك الفواصل المفقودة والأقواس غير المغلقة.</p>
+            <p><strong>4. هل يمكنني استخدام json-formatter.app على هاتفي الذكي أو جهاز اللوحي؟</strong><br>نعم، الأداة ملائمة للهواتف المحمولة، تدعم مجموعة متنوعة من الأجهزة.</p>
+            <p><strong>5. كيف يتم التعامل مع الملفات JSON التالفة؟</strong><br>بعد تحميل ملفات JSON، سيقوم الأداة بتحليلها وتقديم اقتراحات للإصلاح.</p>
+            <p><strong>6. هل هي متوافقة مع أنظمة التشغيل المختلفة؟</strong><br>نعم، إنها متوافقة مع جميع أنظمة التشغيل الرئيسية، بما في ذلك Windows وmacOS وLinux.</p>
+            <p><strong>7. ما خيارات التحويل المتاحة؟</strong><br>يدعم الأداة تحويل بيانات JSON إلى تنسيقات مثل XML وCSV وYAML.</p>
+        </div>
+        <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+</body>
+</html>
