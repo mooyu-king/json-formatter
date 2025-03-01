@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Formatter Tool</title>
     <link rel="icon" href="final-logo.jpg" type="image/jpeg">
-    <meta name="description" content="json-formatter.app is the top JSON formatter for easy formatting, validation, and beautification of JSON data for developers and analysts.">
-    <meta name="keywords" content="json formatter, format JSON, validate JSON, JSON tool, JSON beautifier">
+    <meta name="description" content="json-formatter.app is the ultimate JSON formatter for formatting, validating, and beautifying JSON data. Easily convert JSON to save and share with our json formatter.">
+    <meta name="keywords" content="json formatter, json beautifier, json validator, online json formatter, format json, json converter, beautify json, JSON Checker">
     <meta name="robots" content="nofollow">
     <link rel="canonical" href="https://json-formatter.app/">
     <link rel="stylesheet" href="styles.css">
@@ -90,6 +90,22 @@
             font-size: 1.2em;
         }
 
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
         p {
             margin: 0 0 15px;
             line-height: 1.6;
@@ -160,15 +176,15 @@
     <div class="content-box features">
         <div>
             <h2 class="content-title">Features of json-formatter.app</h2>
-            <h3>Online JSON Formatting</h3>
+            <h3 class="bullet-title">Online JSON Formatting</h3>
             <p>The json formatter automatically formats JSON data, transforming poorly structured text into a readable format. This capability enhances readability and helps users quickly identify issues within their JSON data. The json formatter is an essential tool for anyone working with JSON, especially for developers ensuring their data is correctly structured.</p>
-            <h3>One-Click Copy</h3>
+            <h3 class="bullet-title">One-Click Copy</h3>
             <p>Once formatted, the json formatter allows users to copy the output with a single click. This feature streamlines the process of transferring formatted JSON data, saving time and effort. The json formatter's efficiency in copying formatted text is invaluable for users working with large amounts of data.</p>
-            <h3>Upload and Fix Corrupted JSON</h3>
+            <h3 class="bullet-title">Upload and Fix Corrupted JSON</h3>
             <p>Users can upload JSON files containing errors, and the json formatter will analyze and correct them. This feature is critical for developers dealing with external JSON data that may not be well-formed. The json formatter's ability to restore corrupted JSON files significantly enhances productivity.</p>
-            <h3>Download Formatted JSON</h3>
+            <h3 class="bullet-title">Download Formatted JSON</h3>
             <p>After using the json formatter, users can download their formatted JSON with ease. This feature enables quick access to clean data ready for projects or APIs. The json formatter facilitates a seamless workflow, ensuring users can easily manage their JSON files.</p>
-            <h3>Mobile-Friendly Access</h3>
+            <h3 class="bullet-title">Mobile-Friendly Access</h3>
             <p>The json formatter is fully responsive, allowing users to format and validate JSON data on mobile devices. This mobile access is essential for users who prefer working on the go, maintaining the functionality of the json formatter across all devices.</p>
         </div>
         <img src="Features.jpg" alt="Features" class="shadow">

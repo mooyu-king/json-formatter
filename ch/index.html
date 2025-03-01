@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON 格式化工具</title>
     <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
-    <meta name="description" content="json-formatter.app 是一个顶级的 JSON 格式化工具，方便开发人员和分析师对 JSON 数据进行格式化、验证和美化。">
-    <meta name="keywords" content="json 格式化器, 格式化 JSON, 验证 JSON, JSON 工具, JSON 美化器">
+    <meta name="description" content="json-formatter.app is the ultimate JSON formatter for formatting, validating, and beautifying JSON data. Easily convert JSON to save and share with our json formatter.">
+    <meta name="keywords" content="json formatter, json beautifier, json validator, online json formatter, format json, json converter, beautify json, JSON Checker">
     <meta name="robots" content="nofollow">
     <link rel="canonical" href="https://json-formatter.app/ch/">
     <link rel="stylesheet" href="../styles.css">
@@ -90,6 +90,22 @@
             font-size: 1.2em;
         }
 
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
         p {
             margin: 0 0 15px;
             line-height: 1.6;
@@ -137,8 +153,7 @@
             <pre id="outputJson"></pre>
             <button id="copyButton" class="action-button blue-green-button">复制到剪贴板</button>
             <div id="downloadLink" style="display:none;">
-                <p id="downloadText">下载格式化后的文件：</p> 
-                <a id="formattedFileLink" href="#" download></a>
+                <p id="downloadText">下载格式化后的文件：</p> <a id="formattedFileLink" href="#" download></a>
             </div>
         </div>
     </div>
@@ -146,24 +161,24 @@
     <div class="content-box about">
         <div>
             <h2 class="content-title">关于 json-formatter.app</h2>
-            <p>json-formatter.app 是一个强大的在线工具，专门用于处理 JSON（JavaScript 对象表示法）数据。随着 JSON 成为 Web 应用程序和 API 之间数据交换的事实标准，拥有一个可靠的方法来格式化和验证 JSON 对开发人员、数据分析师以及任何处理这种格式数据的人来说至关重要。</p>
+            <p>json-formatter.app 的 JSON 格式化工具旨在高效处理 JSON（JavaScript 对象表示法）数据。在网站开发领域，JSON 对于应用程序之间的数据交换至关重要。这个 JSON 格式化工具简化了 JSON 的格式化过程，使其对于开发人员和数据分析师来说更加用户友好。通过 json-formatter.app，用户可以访问一个强大的 JSON 格式化工具，它不仅格式化，还验证 JSON 数据，确保其结构正确且易于阅读。</p>
         </div>
         <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
     </div>
 
     <div class="content-box features">
         <div>
-            <h2 class="content-title">网站功能</h2>
-            <h3>在线格式化</h3>
-            <p>json-formatter.app 的主要功能是能够自动格式化 JSON 数据。当用户输入格式不正确的 JSON 文本时，该工具将其转换为整齐的结构，使其更易于阅读和理解。</p>
-            <h3>一键复制</h3>
-            <p>一旦 JSON 数据被格式化，用户可以轻松地通过一键复制功能将其复制，确保用户能够快速将数据转移到所需的地方。</p>
-            <h3>上传损坏的文件</h3>
-            <p>json-formatter.app 允许用户上传可能包含格式错误的 JSON 文件，分析上传的文件并识别错误，帮助用户恢复混乱的 JSON 数据。</p>
-            <h3>下载格式化文件</h3>
-            <p>一旦 JSON 数据被格式化和验证，用户可以通过单击一次下载格式化后的 JSON 文件。</p>
-            <h3>移动访问</h3>
-            <p>json-formatter.app 完全响应，允许用户在各种设备上无缝访问该工具，确保用户可以随时格式化和验证 JSON 数据。</p>
+            <h2 class="content-title">json-formatter.app 的功能</h2>
+            <h3 class="bullet-title">在线 JSON 格式化</h3>
+            <p>该 JSON 格式化工具会自动格式化 JSON 数据，将结构不良的文本转换为可读的格式。此功能增强了可读性，并帮助用户快速识别 JSON 数据中的问题。对于任何使用 JSON 的人来说，该 JSON 格式化工具都是必不可少的，特别是对于确保数据结构正确的开发人员。</p>
+            <h3 class="bullet-title">一键复制</h3>
+            <p>一旦格式化，该 JSON 格式化工具允许用户一键复制输出。这一功能简化了转移格式化 JSON 数据的过程，节省了时间和精力。对于处理大量数据的用户来说，JSON 格式化工具在复制格式化文本方面的效率是无价的。</p>
+            <h3 class="bullet-title">上传并修复损坏的 JSON</h3>
+            <p>用户可以上传包含错误的 JSON 文件，JSON 格式化工具会分析并修复它们。这个特性对处理可能未良好形成的外部 JSON 数据的开发人员来说至关重要。JSON 格式化工具恢复损坏 JSON 文件的能力显著提高了生产力。</p>
+            <h3 class="bullet-title">下载格式化后的 JSON</h3>
+            <p>使用 JSON 格式化工具后，用户可以轻松下载他们的格式化 JSON。此功能使用户能够快速获取准备好用于项目或 API 的干净数据。JSON 格式化工具简化了无缝的工作流程，确保用户能够轻松管理他们的 JSON 文件。</p>
+            <h3 class="bullet-title">移动友好访问</h3>
+            <p>该 JSON 格式化工具完全响应式，允许用户在移动设备上格式化和验证 JSON 数据。这种移动访问对喜欢在移动中工作的用户来说至关重要，确保该 JSON 格式化工具在所有设备上保持功能性。</p>
         </div>
         <img src="../Features.jpg" alt="Features" class="shadow">
     </div>
@@ -171,14 +186,13 @@
     <div class="content-box usage">
         <div>
             <h2 class="content-title">如何使用 json-formatter.app</h2>
-            <p>使用 json-formatter.app 非常简单。以下是帮助您入门的分步指南：</p>
+            <p>在 json-formatter.app 上使用 JSON 格式化工具简单高效。以下是您如何充分利用此 JSON 格式化工具的方法：</p>
             <ol>
-                <li><strong>访问网站</strong>：打开您的 Web 浏览器并导航到 <a href="https://json-formatter.app/">json-formatter.app</a>。</li>
-                <li><strong>输入 JSON 数据</strong>：您可以直接将 JSON 文本复制并粘贴到提供的输入区域，或选择从设备上传 JSON 文件。</li>
-                <li><strong>格式化 JSON</strong>：在输入或上传您的 JSON 数据后，单击“格式化”按钮。</li>
-                <li><strong>验证 JSON</strong>：单击“验证”按钮检查错误。</li>
-                <li><strong>复制和下载</strong>：一旦格式化完成，可以使用一键复制功能或下载按钮。</li>
-                <li><strong>探索功能</strong>：利用其他功能，如树视图，便于导航嵌套对象。</li>
+                <li><strong>访问网站</strong>：前往 <a href="https://json-formatter.app/">json-formatter.app</a>。界面对所有用户开放。</li>
+                <li><strong>输入 JSON 数据</strong>：粘贴您的 JSON 文本或上传一个 JSON 文件。JSON 格式化工具同时支持这两种方法。</li>
+                <li><strong>格式化 JSON</strong>：点击“格式化”按钮。JSON 格式化工具将处理您的数据，使其易于阅读。</li>
+                <li><strong>验证 JSON</strong>：使用“验证”功能确保您的 JSON 满足要求的规范，识别任何错误。</li>
+                <li><strong>复制和下载</strong>：格式化后，利用一键功能复制您的 JSON 或直接下载。JSON 格式化工具简化了这一过程。</li>
             </ol>
         </div>
         <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
@@ -186,14 +200,14 @@
 
     <div class="content-box faq">
         <div>
-            <h2 class="content-title">常见问题</h2>
-            <p><strong>1. json-formatter.app 是免费使用的吗？</strong><br>是的！该工具允许用户免费格式化和验证 JSON 数据。</p>
-            <p><strong>2. 需要注册帐户吗？</strong><br>不需要，用户可以无需注册访问所有功能。</p>
-            <p><strong>3. 验证器可以检测哪些类型的错误？</strong><br>验证器可以识别多种问题，包括缺失的逗号和未关闭的大括号等。</p>
-            <p><strong>4. 可以在手机或平板电脑上使用吗？</strong><br>是的，工具是移动友好的，支持各种设备。</p>
-            <p><strong>5. 如何处理损坏的 JSON 文件？</strong><br>上传 JSON 文件后，工具将进行分析并提供修复建议。</p>
-            <p><strong>6. 是否与各种操作系统兼容？</strong><br>兼容 Windows、macOS、Linux 等所有主要操作系统。</p>
-            <p><strong>7. 有哪些转换选项？</strong><br>工具支持将 JSON 数据转换为 XML、CSV 和 YAML 等格式。</p>
+            <h2 class="content-title">常见问题 - json-formatter.app</h2>
+            <p><strong>1. 这个 JSON 格式化工具是免费使用的吗？</strong><br>是的！在 json-formatter.app 上的 JSON 格式化工具完全免费，允许任何人格式化和验证 JSON。</p>
+            <p><strong>2. 我需要账号来使用这个 JSON 格式化工具吗？</strong><br>使用 JSON 格式化工具不需要注册账号，确保无忧体验。</p>
+            <p><strong>3. 这个 JSON 格式化工具能找到哪些错误？</strong><br>JSON 格式化工具可以识别缺少逗号或格式不正确等问题，帮助用户及时纠正他们的 JSON。</p>
+            <p><strong>4. 这个 JSON 格式化工具适合移动设备吗？</strong><br>是的，这个 JSON 格式化工具针对移动设备进行了优化，方便用户在移动中使用。</p>
+            <p><strong>5. 这个 JSON 格式化工具如何处理损坏的 JSON 文件？</strong><br>JSON 格式化工具会分析上传的文件，识别错误，帮助进行修正，这对开发人员至关重要。</p>
+            <p><strong>6. 这个 JSON 格式化工具是否与不同操作系统兼容？</strong><br>当然！这个 JSON 格式化工具在 Windows、macOS 和 Linux 上都能正常工作，并且与所有主要浏览器兼容。</p>
+            <p><strong>7. 这个 JSON 格式化工具能转换格式吗？</strong><br>JSON 格式化工具还支持转换为 XML 和 CSV 等格式，为用户提供灵活性。</p>
         </div>
         <img src="../FAQ.jpg" alt="FAQ" class="shadow">
     </div>
