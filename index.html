@@ -123,29 +123,58 @@
         .footer {
             background-color: #333;
             color: white;
-            padding: 40px 0;
-            text-align: center;
+            padding: 40px 20px;
             margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .footer .footer-column {
-            display: inline-block;
+            .footer-column {
             width: 30%;
-            vertical-align: top;
-        }
+            text-align: center;
+            }
 
-        .footer .footer-column.functionality {
-            text-align: left;
-        }
+            .footer-column h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            }
 
-        .footer a {
+            .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+            }
+
+            .footer a {
             color: #009688;
             text-decoration: none;
-        }
+            }
 
-        .footer a:hover {
+            .footer a:hover {
             text-decoration: underline;
-        }
+            }
+
+
+            .footer-bottom-container {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            }
+
+            .footer-line {
+            border-top: 1px solid white;
+            margin: 10px auto;
+            width: 80%;
+            }
+
+            .footer-bottom {
+            font-size: 12px;
+            color: #ccc;
+            margin: 10px 0;
+            display: inline-block;
+            }
     </style>
 </head>
 <body>
@@ -247,16 +276,29 @@
     </div>
 
     <div class="footer">
-        <div class="footer-column functionality">
-            <strong>Functionality:</strong> <a href="https://json-formatter.app" target="_blank">JSON Formatter</a>
+        <div class="footer-column">
+            <h4>Functionality</h4>
+            <p><a href="https://json-formatter.app" target="_blank">JSON Formatter</a></p>
+            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
         </div>
         <div class="footer-column">
-            <strong>Share Us:</strong> 
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app" target="_blank">Facebook</a> | 
-            <a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">X</a>
+            <h4>Share Us</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app" target="_blank">LinkedIn</a></p>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">X</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
         </div>
         <div class="footer-column">
-            <strong>About JSON Formatter:</strong> <a href="https://json-formatter.app/about" target="_blank">About the json-formatter.app</a>
+            <h4>About</h4>
+            <p>The json formatter at <a href="https://json-formatter.app" target="_blank">json-formatter.app</a> is a free tool that formats and validates JSON, enabling easy one-click copy.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom-container">
+        <div class="footer-line"></div>
+        <div class="footer-bottom">
+            <p>Copyright © json-formatter.app 2025. All rights reserved. Experience the nostalgia with json-formatter.app</p>
         </div>
     </div>
 
