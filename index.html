@@ -17,11 +17,42 @@
             font-family: Arial, sans-serif;
         }
 
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
         h1 {
             text-align: center;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 80px 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -175,6 +206,14 @@
     </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html"><img src="final-logo.jpg" alt="Logo"></a>
+        <div>
+            <a href="index.html"><strong>Home</strong></a>
+            <a href="json-to-xml.html"><strong>JSON to XML</strong></a>
+        </div>
+    </nav>
+
     <h1><img src="final-logo.jpg" alt="Favicon"> Online JSON Formatter</h1>
     
     <div class="language-selector">
@@ -276,6 +315,7 @@
         <div class="footer-column">
             <h4>Functionality</h4>
             <p><a href="https://json-formatter.app" target="_blank">JSON Formatter</a></p>
+            <p><a href="json-to-xml.html">JSON to XML</a></p>
             <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
         </div>
         <div class="footer-column">

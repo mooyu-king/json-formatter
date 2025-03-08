@@ -65,3 +65,30 @@
 {"title": "Dark Energy", "content": "Investigating the force driving the universe's accelerated expansion."}
   ]
 }
+
+
+/*json to xml*/
+{
+  "bookstore": {
+      "name": "City Bookstore",
+      "location": {
+          "address": "123 Main St",
+          "city": "Anytown",
+          "zip": "12345"
+      },
+      "books": [
+          {
+              "title": "The Great Gatsby",
+              "author": "F. Scott Fitzgerald",
+              "published": 1925,
+              "genres": ["Fiction", "Classic"]
+          },
+          {
+              "title": "To Kill a Mockingbird",
+              "author": "Harper Lee",
+              "published": 1960,
+              "genres": ["Fiction", "Drama"]
+          }
+      ]
+  }
+}
