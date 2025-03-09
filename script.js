@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2025 https://json-formatter.app
+ * Released under the MIT License.
+ * See LICENSE file in the project root for full license information.
+ */
+
 // script.js
 const translations = {
     zh: {
@@ -11,8 +17,8 @@ const translations = {
         invalidJson: "无效的 JSON 文件",
         copied: "已复制到剪贴板！",
         copyFailed: "复制失败！",
-        noFileSelected: "未选择文件", // 文件未选择状态文本
-        chooseFile: "选择文件", // 选择文件文本
+        noFileSelected: "未选择文件",
+        chooseFile: "选择文件",
     },
     en: {
         inputTitle: "Input JSON Text",
@@ -25,8 +31,8 @@ const translations = {
         invalidJson: "Invalid JSON file",
         copied: "Copied to clipboard!",
         copyFailed: "Copy failed!",
-        noFileSelected: "No file selected", // 文件未选择状态文本
-        chooseFile: "Choose File", // 选择文件文本
+        noFileSelected: "No file selected",
+        chooseFile: "Choose File",
     },
     ar: {
         inputTitle: "أدخل نص JSON",
@@ -39,21 +45,18 @@ const translations = {
         invalidJson: "ملف JSON غير صالح",
         copied: "تم النسخ إلى الحافظة!",
         copyFailed: "فشل النسخ!",
-        noFileSelected: "لم يتم اختيار ملف", // 文件未选择状态文本
-        chooseFile: "اختر ملف", // 选择文件文本
+        noFileSelected: "لم يتم اختيار ملف",
+        chooseFile: "اختر ملف",
     }
 };
 
-// 设置语言选择的事件监听
 document.getElementById('language').addEventListener('change', function() {
     const lang = this.value;
     updateLanguage(lang);
 });
 
-// 初始化默认语言为英语
 updateLanguage('en');
 
-// 更新页面语言
 function updateLanguage(lang) {
     document.getElementById('inputTitle').textContent = translations[lang].inputTitle;
     document.getElementById('uploadTitle').textContent = translations[lang].uploadTitle;
@@ -62,22 +65,21 @@ function updateLanguage(lang) {
     document.getElementById('uploadJsonButton').textContent = translations[lang].uploadJsonButton;
     document.getElementById('copyButton').textContent = translations[lang].copyButton;
     document.getElementById('downloadText').textContent = translations[lang].downloadText;
-    document.getElementById('fileStatus').textContent = translations[lang].noFileSelected; // 更新文件状态文本
-    document.getElementById('fileLabel').textContent = translations[lang].chooseFile; // 更新选择文件文本
+    document.getElementById('fileStatus').textContent = translations[lang].noFileSelected;
+    document.getElementById('fileLabel').textContent = translations[lang].chooseFile;
 }
 
-// 处理按钮和输入框的逻辑
 document.getElementById('formatJsonButton').addEventListener('click', formatJson);
 document.getElementById('inputJson').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        event.preventDefault(); // 阻止换行
+        event.preventDefault();
         formatJson();
     }
 });
 
 document.getElementById('jsonFile').addEventListener('change', function() {
     const fileName = this.files.length > 0 ? this.files[0].name : '';
-    document.getElementById('fileStatus').textContent = fileName ? fileName : translations[document.getElementById('language').value].noFileSelected; // 更新文件状态
+    document.getElementById('fileStatus').textContent = fileName ? fileName : translations[document.getElementById('language').value].noFileSelected;
 });
 
 document.getElementById('uploadJsonButton').addEventListener('click', function() {
@@ -90,7 +92,7 @@ document.getElementById('uploadJsonButton').addEventListener('click', function()
         };
         reader.readAsText(file);
     } else {
-        alert(translations[document.getElementById('language').value].noFileSelected); // 提示未选择文件
+        alert(translations[document.getElementById('language').value].noFileSelected);
     }
 });
 
@@ -118,13 +120,13 @@ function validateAndFormatJson(inputText, fileName = '') {
         const json = JSON.parse(inputText);
         const formattedJson = JSON.stringify(json, null, 4);
         document.getElementById('outputJson').textContent = formattedJson;
-        document.getElementById('inputJson').classList.remove('error'); // 移除错误样式
+        document.getElementById('inputJson').classList.remove('error');
         clearErrorHighlight();
         if (fileName) {
             showDownloadLink(formattedJson, fileName);
         }
     } catch (error) {
-        document.getElementById('inputJson').classList.add('error'); // 添加错误样式
+        document.getElementById('inputJson').classList.add('error');
         highlightError(inputText, error);
         alert(translations[document.getElementById('language').value].invalidJson);
     }
@@ -143,10 +145,9 @@ function highlightError(inputText, error) {
             lines[line - 1] = position;
             document.getElementById('inputJson').innerHTML = lines.join('\n');
 
-            // 设置光标到出错位置
             const textarea = document.getElementById('inputJson');
             textarea.focus();
-            textarea.setSelectionRange(textarea.value.length, textarea.value.length); // 将光标移至文本末尾
+            textarea.setSelectionRange(textarea.value.length, textarea.value.length);
             blinkCursor(textarea, line, column);
         }
     }
@@ -172,8 +173,8 @@ function blinkCursor(textarea, line, column) {
                 }
             } else {
                 clearInterval(interval);
-                textarea.style.borderColor = ''; // 清除光标闪烁
-                alert(translations[document.getElementById('language').value].invalidJson); // 提示无效文件
+                textarea.style.borderColor = '';
+                alert(translations[document.getElementById('language').value].invalidJson);
             }
         } else {
             clearInterval(interval);
@@ -184,7 +185,7 @@ function blinkCursor(textarea, line, column) {
 function clearErrorHighlight() {
     const textarea = document.getElementById('inputJson');
     textarea.classList.remove('error');
-    textarea.style.borderColor = ''; // 重置边框颜色
+    textarea.style.borderColor = '';
 }
 
 function showDownloadLink(formattedJson, originalFileName) {
