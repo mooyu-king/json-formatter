@@ -235,11 +235,26 @@
             <h2 id="inputTitle">Input JSON Text</h2>
             <textarea id="inputJson" rows="20" placeholder="Please enter unformatted JSON text"></textarea>
             <button id="convertJsonToXmlButton" class="action-button blue-green-button">Convert JSON to XML</button>
+
+            <div class="upload-section">
+                <h2 id="uploadTitle">Upload JSON File</h2>
+                <label id="fileLabel" for="jsonFile">Choose File</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;" onchange="updateFileStatus(this)">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">Choose File</button>
+                <p id="fileStatus">No file selected</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">Upload and Format</button>
+            </div>
         </div>
+
         <div class="output-section">
             <h2 id="outputTitle">Converted XML Text</h2>
             <pre id="outputXml"></pre>
             <button id="copyButton" class="action-button blue-green-button">Copy to Clipboard</button>
+
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">Download XML file:</p>
+                <a id="formattedFileLink" href="#" download>Download XML</a>
+            </div>
         </div>
     </div>
 
@@ -321,46 +336,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        document.getElementById('convertJsonToXmlButton').addEventListener('click', function() {
-            const inputText = document.getElementById('inputJson').value;
-            convertJsonToXml(inputText);
-        });
-
-        function convertJsonToXml(json) {
-            try {
-                const obj = JSON.parse(json);
-                const xml = jsonToXml(obj);
-                document.getElementById('outputXml').textContent = formatXml(xml);
-            } catch (error) {
-                alert("Invalid JSON: " + error.message);
-            }
-        }
-
-        function jsonToXml(json, rootElement = "root") {
-            let xml = `<${rootElement}>\n`;
-            for (let key in json) {
-                if (json.hasOwnProperty(key)) {
-                    const value = json[key];
-                    xml += (typeof value === "object") 
-                        ? jsonToXml(value, key) 
-                        : `    <${key}>${value}</${key}>\n`;
-                }
-            }
-            xml += `</${rootElement}>\n`;
-            return xml;
-        }
-
-        function formatXml(xml) {
-            return xml.trim();
-        }
-
-        document.getElementById('copyButton').addEventListener('click', function() {
-            const outputText = document.getElementById('outputXml').textContent;
-            navigator.clipboard.writeText(outputText)
-                .then(() => alert("Copied to clipboard!"))
-                .catch(err => alert("Copy failed!"));
-        });
-    </script>
 </body>
 </html>
