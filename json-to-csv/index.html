@@ -1,0 +1,287 @@
+<!--
+  Copyright (c) 2025 https://json-formatter.app/json-to-xml/
+  Released under the MIT License.
+  See LICENSE file in the project root for full license information.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to CSV Converter</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="Convert JSON to CSV easily with our JSON to CSV converter tool.">
+    <meta name="keywords" content="json to csv, json converter, convert json to csv, online json to csv converter">
+    <meta name="robots" content="nofollow">
+    <link rel="canonical" href="https://json-formatter.app/json-to-csv/">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 80px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-column {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html"><img src="../final-logo.jpg" alt="Logo"></a>
+        <div>
+            <a href="../index.html" target="_blank"><strong>Home</strong></a>
+            <a href="index.html" target="_blank"><strong>JSON to CSV</strong></a> <!-- 修改为JSON to CSV -->
+            <a href="../json-to-xml/index.html" target="_blank"><strong>JSON to XML</strong></a> <!-- 加入 JSON to XML 的链接 -->
+        </div>
+    </nav>
+    
+    <h1><img src="../final-logo.jpg" alt="Favicon"> JSON to CSV Converter</h1>
+    
+    <div class="language-selector">
+        <label for="language"><strong>Select Language:</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="index.html">English</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">Input JSON Text</h2>
+            <textarea id="inputJson" rows="20" placeholder="Please enter unformatted JSON text"></textarea>
+            <button id="convertJsonToCsvButton" class="action-button blue-green-button">Convert JSON to CSV</button>
+
+            <div class="upload-section">
+                <h2 id="uploadTitle">Upload JSON File</h2>
+                <label id="fileLabel" for="jsonFile">Choose File</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;" onchange="updateFileStatus(this)">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">Choose File</button>
+                <p id="fileStatus">No file selected</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">Upload and Convert</button>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h2 id="outputTitle">Converted CSV Text</h2>
+            <pre id="outputCsv"></pre> <!-- 将输出改为CSV -->
+            <button id="copyButton" class="action-button blue-green-button">Copy to Clipboard</button>
+
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">Download CSV file:</p>
+                <a id="formattedFileLink" href="#" download>Download CSV</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-column">
+            <h4>Functionality</h4>
+            <p><a href="index.html">JSON to CSV</a></p>
+            <p><a href="../index.html" target="_blank">JSON Formatter</a></p>
+            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>Share Us</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app/json-to-csv/" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app/json-to-csv/" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app/json-to-csv/" target="_blank">LinkedIn</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>About</h4>
+            <p>The JSON formatter at <a href="https://json-formatter.app/json-to-csv/" target="_blank">json-to-csv</a> is a free tool for converting JSON to CSV, offering formatting, validation, and easy one-click copying.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © json-formatter.app 2025. All rights reserved.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

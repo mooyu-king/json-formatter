@@ -19,7 +19,7 @@
 {"title": "Nanotechnology", "content": "Engineering materials and devices at the nanoscale for innovative applications."},
 {"title": "Astrophysics", "content": "Investigating the physical laws governing celestial bodies and the universe."},
 {"title": "Urban Planning", "content": "Designing efficient, sustainable, and livable cities for the future."},
-{"title": "Immunology", "content": "Understanding the immune system and its role in fighting diseases."},
+{"title": "Immunology", "content": "Undersatanding the immune system and its role in fighting diseases."},
 {"title": "3D Printing", "content": "Using additive manufacturing to create objects layer by layer."},
 {"title": "Meditation", "content": "Practicing mindfulness and relaxation techniques for mental health."},
 {"title": "Augmented Reality", "content": "Enhancing the real world with computer-generated visual elements."},
@@ -92,3 +92,25 @@
       ]
   }
 }
+
+/*json to csv*/
+[
+    {
+        "id": 1,
+        "name": "Alice",
+        "age": 30,
+        "city": "Beijing"
+    },
+    {
+        "id": 2,
+        "name": "Bob",
+        "age": 25,
+        "city": "Shanghai"
+    },
+    {
+        "id": 3,
+        "name": "Charlie",
+        "age": 35,
+        "city": "Guangzhou"
+    }
+]
