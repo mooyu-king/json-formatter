@@ -45,9 +45,9 @@ function convertJsonToCsv(json) {
     try {
         const obj = JSON.parse(json);
         const csv = jsonToCsv(obj);
-        document.getElementById('outputCsv').textContent = csv; // 输出CSV文本
-        document.getElementById('downloadLink').style.display = 'block'; // 显示下载链接
-        prepareDownload(csv); // 准备下载链接
+        document.getElementById('outputCsv').textContent = csv;
+        document.getElementById('downloadLink').style.display = 'block';
+        prepareDownload(csv);
     } catch (error) {
         alert("Invalid JSON: " + error.message);
     }
@@ -55,7 +55,7 @@ function convertJsonToCsv(json) {
 
 function jsonToCsv(json) {
     const rows = [];
-    const keys = Object.keys(json[0]); // 假设 JSON 是一个数组
+    const keys = Object.keys(json[0]);
 
     // 添加头行
     rows.push(keys.join(','));
@@ -75,14 +75,14 @@ function prepareDownload(csv) {
     const downloadLink = document.getElementById('formattedFileLink');
 
     const baseFileName = uploadedFileName.replace(/\.json$/, '');
-    const newFileName = `${baseFileName}-csv-formatter.csv`; // 修改为CSV文件名
+    const newFileName = `${baseFileName}-csv-formatter.csv`;
 
     downloadLink.href = url;
-    downloadLink.download = newFileName; // 设置下载文件名
+    downloadLink.download = newFileName;
 }
 
 document.getElementById('copyButton').addEventListener('click', function() {
-    const outputText = document.getElementById('outputCsv').textContent; // 复制 CSV 文本
+    const outputText = document.getElementById('outputCsv').textContent;
     navigator.clipboard.writeText(outputText)
         .then(() => alert("Copied to clipboard!"))
         .catch(err => alert("Copy failed!"));
