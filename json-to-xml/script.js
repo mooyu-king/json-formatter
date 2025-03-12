@@ -5,15 +5,15 @@
  */
 
 // script.js
-let uploadedFileName = ''; // 用于存储上传的文件名
+let uploadedFileName = '';
 
 function updateFileStatus(input) {
     const fileStatus = document.getElementById('fileStatus');
     if (input.files.length > 0) {
-        uploadedFileName = input.files[0].name; // 记录上传文件的名称
-        fileStatus.textContent = uploadedFileName; // 显示选中文件的名称
+        uploadedFileName = input.files[0].name;
+        fileStatus.textContent = uploadedFileName;
     } else {
-        fileStatus.textContent = "No file selected"; // 如果没有选择文件
+        fileStatus.textContent = "No file selected";
     }
 }
 
@@ -26,7 +26,6 @@ document.getElementById('convertJsonToXmlButton').addEventListener('click', func
     }
 });
 
-// 在上传文件时，读取并转换 JSON
 document.getElementById('uploadJsonButton').addEventListener('click', function() {
     const fileInput = document.getElementById('jsonFile');
     if (fileInput.files.length > 0) {
@@ -47,8 +46,8 @@ function convertJsonToXml(json) {
         const obj = JSON.parse(json);
         const xml = jsonToXml(obj);
         document.getElementById('outputXml').textContent = formatXml(xml);
-        document.getElementById('downloadLink').style.display = 'block'; // 显示下载链接
-        prepareDownload(xml); // 准备下载链接
+        document.getElementById('downloadLink').style.display = 'block';
+        prepareDownload(xml);
     } catch (error) {
         alert("Invalid JSON: " + error.message);
     }
@@ -69,7 +68,7 @@ function jsonToXml(json, rootElement = "root") {
 }
 
 function formatXml(xml) {
-    return xml.trim(); // 可以添加更多复杂的格式化逻辑
+    return xml.trim();
 }
 
 function prepareDownload(xml) {
@@ -77,12 +76,11 @@ function prepareDownload(xml) {
     const url = URL.createObjectURL(blob);
     const downloadLink = document.getElementById('formattedFileLink');
     
-    // 获取基本文件名，并替换扩展名
-    const baseFileName = uploadedFileName.replace(/\.json$/, ''); // 去掉.json后缀
-    const newFileName = `${baseFileName}-xml-formatter.xml`; // 创建新的文件名
+    const baseFileName = uploadedFileName.replace(/\.json$/, '');
+    const newFileName = `${baseFileName}-xml-formatter.xml`;
 
-    downloadLink.href = url; // 设置下载链接的 URL
-    downloadLink.download = newFileName; // 设置下载文件名
+    downloadLink.href = url;
+    downloadLink.download = newFileName;
 }
 
 document.getElementById('copyButton').addEventListener('click', function() {
