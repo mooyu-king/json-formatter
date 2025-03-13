@@ -57,10 +57,8 @@ function jsonToCsv(json) {
     const rows = [];
     const keys = Object.keys(json[0]);
 
-    // 添加头行
     rows.push(keys.join(','));
 
-    // 添加每一行数据
     json.forEach(item => {
         const values = keys.map(key => item[key]);
         rows.push(values.join(','));
