@@ -23,11 +23,42 @@
             font-family: Arial, sans-serif;
         }
 
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
         h1 {
             text-align: center;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 80px 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -125,9 +156,72 @@
             width: 100px;
             height: auto;
         }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-column {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+        <div>
+            <a href="../index.html" target="_blank"><strong>Home</strong></a>
+            <a href="../json-parser/index.html" target="_blank"><strong>JSON Parser</strong></a>
+            <a href="../json-to-xml/index.html" target="_blank"><strong>JSON to XML</strong></a>
+            <a href="../json-to-csv/index.html" target="_blank"><strong>JSON to CSV</strong></a>
+        </div>
+    </nav>
+
     <h1><img src="../final-logo.jpg" alt="Favicon"> Outil de Formatage JSON en Ligne</h1>
     
     <div class="language-selector">
@@ -216,6 +310,33 @@
             <p><strong>7. Le formatteur JSON peut-il convertir des formats ?</strong><br>Le formatteur JSON prend également en charge la conversion vers des formats tels que XML et CSV, offrant donc de la polyvalence aux utilisateurs.</p>
         </div>
         <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <h4>Fonctionnalité</h4>
+            <p><a href="https://json-formatter.app" target="_blank">JSON Formatter</a></p>
+            <p><a href="json-parser/index.html" target="_blank">JSON Parser</a></p>
+            <p><a href="json-to-xml/index.html" target="_blank">JSON to XML</a></p>
+            <p><a href="json-to-csv/index.html" target="_blank">JSON to CSV</a></p>
+            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>Partagez-nous</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app" target="_blank">LinkedIn</a></p>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">X</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>À propos</h4>
+            <p>Le formateur JSON sur <a href="https://json-formatter.app" target="_blank">json-formatter.app</a> est un outil gratuit qui formate et valide le JSON, permettant une copie facile en un clic.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © json-formatter.app 2025. All rights reserved. Experience the nostalgia with json-formatter.app</p>
     </div>
 
     <script>
