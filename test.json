@@ -114,3 +114,16 @@
         "city": "Guangzhou"
     }
 ]
+
+/*json to string*/
+{
+    "name": "John Doe",
+    "age": 30,
+    "email": "johndoe@example.com",
+    "isMember": true,
+    "favorites": {
+        "color": "blue",
+        "food": "pizza"
+    },
+    "hobbies": ["reading", "gaming", "hiking"]
+}
