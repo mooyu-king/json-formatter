@@ -41,6 +41,13 @@
     </url>
 
     <url>
+        <loc>https://json-formatter.app/xml-formatter/</loc>
+        <lastmod>2025-04-02T22:18:19+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://json-formatter.app/ch/</loc>
         <lastmod>2025-03-17T23:10:35+00:00</lastmod>
         <changefreq>weekly</changefreq>
