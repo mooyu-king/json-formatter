@@ -46,26 +46,5 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
-    <url>
-        <loc>https://json-formatter.app/ch/</loc>
-        <lastmod>2025-03-17T23:10:35+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://json-formatter.app/fr/</loc>
-        <lastmod>2025-03-17T23:11:15+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://json-formatter.app/ar/</loc>
-        <lastmod>2025-03-17T23:11:45+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
     
 </urlset>
