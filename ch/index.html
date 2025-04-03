@@ -1,0 +1,363 @@
+<!--
+  Copyright (c) 2025 https://json-formatter.app/ch/
+  Released under the MIT License.
+  See LICENSE file in the project root for full license information.
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 格式化在线工具</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="json-formatter.app is the ultimate JSON formatter for formatting and validating JSON data. Easily convert and beautify JSON for sharing.">
+    <meta name="keywords" content="json formatter, json beautifier, json validator, online json tool, format json, json converter">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://json-formatter.app/ch/">
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="msvalidate.01" content="04DCEDB3C260CA03E26338ED34C9014B" />
+    <!-- Clarity tracking code for https://json-formatter.app/ -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qqpppwc2v4");
+    </script>
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 80px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-column {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+        <div>
+            <a href="../index.html" target="_blank"><strong>Home</strong></a>
+            <a href="../json-parser/index.html" target="_blank"><strong>JSON Parser</strong></a>
+            <a href="../json-to-xml/index.html" target="_blank"><strong>JSON to XML</strong></a>
+            <a href="../json-to-csv/index.html" target="_blank"><strong>JSON to CSV</strong></a>
+            <a href="../json-to-string/index.html" target="_blank"><strong>JSON to String</strong></a>
+            <a href="../xml-formatter/index.html" target="_blank"><strong>XML Formatter</strong></a>
+        </div>
+    </nav>
+
+    <h1><img src="../final-logo.jpg" alt="Favicon"> 在线 JSON 格式化工具</h1>
+    
+    <div class="language-selector">
+        <label for="language"><strong>选择语言：</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="../index.html">English</option>
+            <option value="index.html" selected>中文</option>
+            <option value="../fr/index.html">Français</option>
+            <option value="../ar/index.html">العربية</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">输入 JSON 文本</h2>
+            <textarea id="inputJson" rows="20" placeholder="请输入未格式化的 JSON 文本"></textarea>
+            <button id="formatJsonButton" class="action-button blue-green-button">格式化 JSON</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">上传 JSON 文件</h2>
+                <label id="fileLabel" for="jsonFile">选择文件</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">选择文件</button>
+                <p id="fileStatus">未选择文件</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">上传并格式化</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">格式化后的 JSON 文本</h2>
+            <pre id="outputJson"></pre>
+            <button id="copyButton" class="action-button blue-green-button">复制到剪贴板</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">下载格式化后的文件：</p> <a id="formattedFileLink" href="#" download></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">关于 json-formatter.app</h2>
+            <p>json-formatter.app 的 JSON 格式化工具旨在高效处理 JSON（JavaScript 对象表示法）数据。在网站开发领域，JSON 对于应用程序之间的数据交换至关重要。这个 JSON 格式化工具简化了 JSON 的格式化过程，使其对于开发人员和数据分析师来说更加用户友好。通过 json-formatter.app，用户可以访问一个强大的 JSON 格式化工具，它不仅格式化，还验证 JSON 数据，确保其结构正确且易于阅读。</p>
+        </div>
+        <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">json-formatter.app 的功能</h2>
+            <h3 class="bullet-title">在线 JSON 格式化</h3>
+            <p>该 JSON 格式化工具会自动格式化 JSON 数据，将结构不良的文本转换为可读的格式。此功能增强了可读性，并帮助用户快速识别 JSON 数据中的问题。对于任何使用 JSON 的人来说，该 JSON 格式化工具都是必不可少的，特别是对于确保数据结构正确的开发人员。</p>
+            <h3 class="bullet-title">一键复制</h3>
+            <p>一旦格式化，该 JSON 格式化工具允许用户一键复制输出。这一功能简化了转移格式化 JSON 数据的过程，节省了时间和精力。对于处理大量数据的用户来说，JSON 格式化工具在复制格式化文本方面的效率是无价的。</p>
+            <h3 class="bullet-title">上传并修复损坏的 JSON</h3>
+            <p>用户可以上传包含错误的 JSON 文件，JSON 格式化工具会分析并修复它们。这个特性对处理可能未良好形成的外部 JSON 数据的开发人员来说至关重要。JSON 格式化工具恢复损坏 JSON 文件的能力显著提高了生产力。</p>
+            <h3 class="bullet-title">下载格式化后的 JSON</h3>
+            <p>使用 JSON 格式化工具后，用户可以轻松下载他们的格式化 JSON。此功能使用户能够快速获取准备好用于项目或 API 的干净数据。JSON 格式化工具简化了无缝的工作流程，确保用户能够轻松管理他们的 JSON 文件。</p>
+            <h3 class="bullet-title">移动友好访问</h3>
+            <p>该 JSON 格式化工具完全响应式，允许用户在移动设备上格式化和验证 JSON 数据。这种移动访问对喜欢在移动中工作的用户来说至关重要，确保该 JSON 格式化工具在所有设备上保持功能性。</p>
+        </div>
+        <img src="../Features.jpg" alt="Features" class="shadow">
+    </div>
+
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">如何使用 json-formatter.app</h2>
+            <p>在 json-formatter.app 上使用 JSON 格式化工具简单高效。以下是您如何充分利用此 JSON 格式化工具的方法：</p>
+            <ol>
+                <li><strong>访问网站</strong>：前往 <a href="https://json-formatter.app/">json-formatter.app</a>。界面对所有用户开放。</li>
+                <li><strong>输入 JSON 数据</strong>：粘贴您的 JSON 文本或上传一个 JSON 文件。JSON 格式化工具同时支持这两种方法。</li>
+                <li><strong>格式化 JSON</strong>：点击“格式化”按钮。JSON 格式化工具将处理您的数据，使其易于阅读。</li>
+                <li><strong>验证 JSON</strong>：使用“验证”功能确保您的 JSON 满足要求的规范，识别任何错误。</li>
+                <li><strong>复制和下载</strong>：格式化后，利用一键功能复制您的 JSON 或直接下载。JSON 格式化工具简化了这一过程。</li>
+            </ol>
+        </div>
+        <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">常见问题 - json-formatter.app</h2>
+            <p><strong>1. 这个 JSON 格式化工具是免费使用的吗？</strong><br>是的！在 json-formatter.app 上的 JSON 格式化工具完全免费，允许任何人格式化和验证 JSON。</p>
+            <p><strong>2. 我需要账号来使用这个 JSON 格式化工具吗？</strong><br>使用 JSON 格式化工具不需要注册账号，确保无忧体验。</p>
+            <p><strong>3. 这个 JSON 格式化工具能找到哪些错误？</strong><br>JSON 格式化工具可以识别缺少逗号或格式不正确等问题，帮助用户及时纠正他们的 JSON。</p>
+            <p><strong>4. 这个 JSON 格式化工具适合移动设备吗？</strong><br>是的，这个 JSON 格式化工具针对移动设备进行了优化，方便用户在移动中使用。</p>
+            <p><strong>5. 这个 JSON 格式化工具如何处理损坏的 JSON 文件？</strong><br>JSON 格式化工具会分析上传的文件，识别错误，帮助进行修正，这对开发人员至关重要。</p>
+            <p><strong>6. 这个 JSON 格式化工具是否与不同操作系统兼容？</strong><br>当然！这个 JSON 格式化工具在 Windows、macOS 和 Linux 上都能正常工作，并且与所有主要浏览器兼容。</p>
+            <p><strong>7. 这个 JSON 格式化工具能转换格式吗？</strong><br>JSON 格式化工具还支持转换为 XML 和 CSV 等格式，为用户提供灵活性。</p>
+        </div>
+        <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <h4>功能</h4>
+            <p><a href="https://json-formatter.app" target="_blank">JSON Formatter</a></p>
+            <p><a href="../json-parser/index.html" target="_blank">JSON Parser</a></p>
+            <p><a href="../json-to-xml/index.html" target="_blank">JSON to XML</a></p>
+            <p><a href="../json-to-csv/index.html" target="_blank">JSON to CSV</a></p>
+            <p><a href="../json-to-string/index.html" target="_blank">JSON to String</a></p>
+            <p><a href="../xml-formatter/index.html" target="_blank">XML Formatter</a></p>
+            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>分享我们</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app" target="_blank">LinkedIn</a></p>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">X</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>关于</h4>
+            <p>网站 <a href="https://json-formatter.app" target="_blank">json-formatter.app</a>上的JSON格式化工具是一款免费并且开源的工具，可以格式化和验证JSON，方便一键复制。</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © json-formatter.app 2025. All rights reserved. Experience the nostalgia with json-formatter.app</p>
+    </div>
+
+    <script>
+        function changeLanguage() {
+            const languageSelector = document.getElementById('language');
+            const selectedValue = languageSelector.value;
+            window.location.href = selectedValue;
+        }
+    </script>
+</body>
+</html>

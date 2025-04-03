@@ -1,0 +1,363 @@
+<!--
+  Copyright (c) 2025 https://json-formatter.app/fr/
+  Released under the MIT License.
+  See LICENSE file in the project root for full license information.
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil de Formatage JSON Outil</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="json-formatter.app is the ultimate JSON formatter for formatting and validating JSON data. Easily convert and beautify JSON for sharing.">
+    <meta name="keywords" content="json formatter, json beautifier, json validator, online json tool, format json, json converter">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://json-formatter.app/fr/">
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="msvalidate.01" content="04DCEDB3C260CA03E26338ED34C9014B" />
+    <!-- Clarity tracking code for https://json-formatter.app/ -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qqpppwc2v4");
+    </script>
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 80px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-column {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+        <div>
+            <a href="../index.html" target="_blank"><strong>Home</strong></a>
+            <a href="../json-parser/index.html" target="_blank"><strong>JSON Parser</strong></a>
+            <a href="../json-to-xml/index.html" target="_blank"><strong>JSON to XML</strong></a>
+            <a href="../json-to-csv/index.html" target="_blank"><strong>JSON to CSV</strong></a>
+            <a href="../json-to-string/index.html" target="_blank"><strong>JSON to String</strong></a>
+            <a href="../xml-formatter/index.html" target="_blank"><strong>XML Formatter</strong></a>
+        </div>
+    </nav>
+
+    <h1><img src="../final-logo.jpg" alt="Favicon"> Outil de Formatage JSON en Ligne</h1>
+    
+    <div class="language-selector">
+        <label for="language"><strong>Sélectionnez la langue :</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="../index.html">English</option>
+            <option value="../ch/index.html">中文</option>
+            <option value="index.html" selected>Français</option>
+            <option value="../ar/index.html">العربية</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">Entrer le texte JSON</h2>
+            <textarea id="inputJson" rows="20" placeholder="Veuillez entrer du texte JSON non formaté"></textarea>
+            <button id="formatJsonButton" class="action-button blue-green-button">Formatter le JSON</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">Télécharger le fichier JSON</h2>
+                <label id="fileLabel" for="jsonFile">Choisir un fichier</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">Choisir un fichier</button>
+                <p id="fileStatus">Aucun fichier sélectionné</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">Télécharger et formater</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">Texte JSON formaté</h2>
+            <pre id="outputJson"></pre>
+            <button id="copyButton" class="action-button blue-green-button">Copier dans le presse-papiers</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">Télécharger le fichier formaté :</p> <a id="formattedFileLink" href="#" download></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">À propos de json-formatter.app</h2>
+            <p>Le formatteur JSON sur json-formatter.app est conçu pour gérer efficacement les données JSON (JavaScript Object Notation). Dans le domaine du développement web, JSON est crucial pour l'échange de données entre applications. Ce formatteur JSON simplifie le processus de formatage des JSON, le rendant convivial pour les développeurs et les analystes de données. Avec json-formatter.app, les utilisateurs ont accès à un puissant formatteur JSON qui non seulement formate mais valide également les données JSON, garantissant qu'elles sont correctement structurées et faciles à lire.</p>
+        </div>
+        <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">Fonctionnalités de json-formatter.app</h2>
+            <h3 class="bullet-title">Formatage JSON en ligne</h3>
+            <p>Le formatteur JSON formate automatiquement les données JSON, transformant un texte mal structuré en un format lisible. Cette capacité améliore la lisibilité et aide les utilisateurs à identifier rapidement les problèmes au sein de leurs données JSON. Le formatteur JSON est un outil essentiel pour quiconque travaillant avec JSON, en particulier pour les développeurs qui s'assurent que leurs données sont correctement structurées.</p>
+            <h3 class="bullet-title">Copie en un clic</h3>
+            <p>Une fois formatées, le formatteur JSON permet aux utilisateurs de copier la sortie d'un seul clic. Cette fonctionnalité rationalise le processus de transfert des données JSON formatées, économisant du temps et des efforts. L'efficacité du formatteur JSON dans la copie du texte formaté est inestimable pour les utilisateurs travaillant avec de grandes quantités de données.</p>
+            <h3 class="bullet-title">Télécharger et corriger des JSON corrompus</h3>
+            <p>Les utilisateurs peuvent télécharger des fichiers JSON contenant des erreurs, et le formatteur JSON les analysera et les corrigera. Cette fonctionnalité est critique pour les développeurs traitant des données JSON externes qui peuvent ne pas être bien formées. La capacité du formatteur JSON à restaurer des fichiers JSON corrompus améliore considérablement la productivité.</p>
+            <h3 class="bullet-title">Télécharger des JSON formatés</h3>
+            <p>Après avoir utilisé le formatteur JSON, les utilisateurs peuvent télécharger leur JSON formaté facilement. Cette fonction permet un accès rapide à des données propres prêtes pour des projets ou des APIs. Le formatteur JSON facilite un flux de travail sans heurts, garantissant que les utilisateurs peuvent gérer facilement leurs fichiers JSON.</p>
+            <h3 class="bullet-title">Accès mobile convivial</h3>
+            <p>Le formatteur JSON est entièrement responsive, permettant aux utilisateurs de formater et de valider les données JSON sur des appareils mobiles. Cet accès mobile est essentiel pour les utilisateurs qui préfèrent travailler en déplacement, en maintenant la fonctionnalité du formatteur JSON sur tous les appareils.</p>
+        </div>
+        <img src="../Features.jpg" alt="Features" class="shadow">
+    </div>
+
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">Comment utiliser json-formatter.app</h2>
+            <p>Utiliser le formatteur JSON sur json-formatter.app est simple et efficace. Voici comment vous pouvez tirer le meilleur parti de ce formatteur JSON :</p>
+            <ol>
+                <li><strong>Visitez le site Web</strong> : Allez sur <a href="https://json-formatter.app/">json-formatter.app</a>. L'interface est accessible à tous les utilisateurs.</li>
+                <li><strong>Entrer les données JSON</strong> : Collez votre texte JSON ou téléchargez un fichier JSON. Le formatteur JSON prend en charge les deux méthodes.</li>
+                <li><strong>Formater le JSON</strong> : Cliquez sur le bouton “Formatter”. Le formatteur JSON traitera vos données, les rendant faciles à lire.</li>
+                <li><strong>Valider le JSON</strong> : Utilisez la fonction “Valider” pour vous assurer que votre JSON répond aux spécifications requises, en identifiant les erreurs.</li>
+                <li><strong>Copier et télécharger</strong> : Après le formatage, utilisez la fonction en un clic pour copier votre JSON ou le télécharger directement. Le formatteur JSON rationalise ce processus pour les utilisateurs.</li>
+            </ol>
+        </div>
+        <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">Questions Fréquemment Posées - json-formatter.app</h2>
+            <p><strong>1. Le formatteur JSON est-il gratuit ?</strong><br>Oui ! Le formatteur JSON sur json-formatter.app est totalement gratuit, permettant à quiconque de formater et de valider des JSON sans coûts.</p>
+            <p><strong>2. Ai-je besoin d'un compte pour le formatteur JSON ?</strong><br>Aucun compte n'est requis pour utiliser le formatteur JSON, garantissant une expérience sans tracas.</p>
+            <p><strong>3. Quelles erreurs le formatteur JSON peut-il trouver ?</strong><br>Le formatteur JSON identifie des problèmes tels que des virgules manquantes ou des formats incorrects, aidant les utilisateurs à corriger leur JSON rapidement.</p>
+            <p><strong>4. Le formatteur JSON est-il adapté aux mobiles ?</strong><br>Oui, le formatteur JSON est optimisé pour les appareils mobiles, ce qui le rend pratique pour les utilisateurs en déplacement.</p>
+            <p><strong>5. Comment le formatteur JSON gère-t-il les fichiers JSON corrompus ?</strong><br>Le formatteur JSON analyse les fichiers téléchargés, identifie les erreurs et aide à les corriger, ce qui est crucial pour les développeurs.</p>
+            <p><strong>6. Le formatteur JSON est-il compatible avec différents systèmes d'exploitation ?</strong><br>Absolument ! Le formatteur JSON fonctionne sur Windows, macOS et Linux, et est compatible avec tous les navigateurs majeurs.</p>
+            <p><strong>7. Le formatteur JSON peut-il convertir des formats ?</strong><br>Le formatteur JSON prend également en charge la conversion vers des formats tels que XML et CSV, offrant donc de la polyvalence aux utilisateurs.</p>
+        </div>
+        <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <h4>Fonctionnalité</h4>
+            <p><a href="https://json-formatter.app" target="_blank">JSON Formatter</a></p>
+            <p><a href="../json-parser/index.html" target="_blank">JSON Parser</a></p>
+            <p><a href="../json-to-xml/index.html" target="_blank">JSON to XML</a></p>
+            <p><a href="../json-to-csv/index.html" target="_blank">JSON to CSV</a></p>
+            <p><a href="../json-to-string/index.html" target="_blank">JSON to String</a></p>
+            <p><a href="../xml-formatter/index.html" target="_blank">XML Formatter</a></p>
+            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>Partagez-nous</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app" target="_blank">LinkedIn</a></p>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">X</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>À propos</h4>
+            <p>Le formateur JSON sur <a href="https://json-formatter.app" target="_blank">json-formatter.app</a> est un outil gratuit qui formate et valide le JSON, permettant une copie facile en un clic.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © json-formatter.app 2025. All rights reserved. Experience the nostalgia with json-formatter.app</p>
+    </div>
+
+    <script>
+        function changeLanguage() {
+            const languageSelector = document.getElementById('language');
+            const selectedValue = languageSelector.value;
+            window.location.href = selectedValue;
+        }
+    </script>
+</body>
+</html>

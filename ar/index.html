@@ -1,0 +1,363 @@
+<!--
+  Copyright (c) 2025 https://json-formatter.app/ar/
+  Released under the MIT License.
+  See LICENSE file in the project root for full license information.
+-->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة تنسيق JSON</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="json-formatter.app is the ultimate JSON formatter for formatting and validating JSON data. Easily convert and beautify JSON for sharing.">
+    <meta name="keywords" content="json formatter, json beautifier, json validator, online json tool, format json, json converter">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://json-formatter.app/ar/">
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="msvalidate.01" content="04DCEDB3C260CA03E26338ED34C9014B" />
+    <!-- Clarity tracking code for https://json-formatter.app/ -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qqpppwc2v4");
+    </script>
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 80px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-column {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+        <div>
+            <a href="../index.html" target="_blank"><strong>Home</strong></a>
+            <a href="../json-parser/index.html" target="_blank"><strong>JSON Parser</strong></a>
+            <a href="../json-to-xml/index.html" target="_blank"><strong>JSON to XML</strong></a>
+            <a href="../json-to-csv/index.html" target="_blank"><strong>JSON to CSV</strong></a>
+            <a href="../json-to-string/index.html" target="_blank"><strong>JSON to String</strong></a>
+            <a href="../xml-formatter/index.html" target="_blank"><strong>XML Formatter</strong></a>
+        </div>
+    </nav>
+
+    <h1><img src="../final-logo.jpg" alt="Favicon"> أداة تنسيق JSON على الإنترنت</h1>
+
+    <div class="language-selector">
+        <label for="language"><strong>اختر اللغة:</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="../index.html">English</option>
+            <option value="../ch/index.html">中文</option>
+            <option value="../fr/index.html">Français</option>
+            <option value="index.html" selected>العربية</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">أدخل نص JSON</h2>
+            <textarea id="inputJson" rows="20" placeholder="يرجى إدخال نص JSON غير منسق"></textarea>
+            <button id="formatJsonButton" class="action-button blue-green-button">تنسيق JSON</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">رفع ملف JSON</h2>
+                <label id="fileLabel" for="jsonFile">اختيار ملف</label>
+                <input type="file" id="jsonFile" accept=".json" style="display: none;">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('jsonFile').click();">اختيار ملف</button>
+                <p id="fileStatus">لم يتم اختيار أي ملف</p>
+                <button id="uploadJsonButton" class="action-button blue-green-button">رفع وتنسيق</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">نص JSON المنسق</h2>
+            <pre id="outputJson"></pre>
+            <button id="copyButton" class="action-button blue-green-button">نسخ إلى الحافظة</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">تنزيل الملف المنسق:</p> <a id="formattedFileLink" href="#" download></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">حول json-formatter.app</h2>
+            <p>أداة تنسيق JSON على json-formatter.app مصممة لمعالجة بيانات JSON (تنسيق كائنات جافا سكريبت) بكفاءة. في مجال تطوير الويب، يعتبر JSON أمرًا حيويًا لتبادل البيانات بين التطبيقات. هذه الأداة تبسط عملية تنسيق JSON، مما يجعلها سهلة الاستخدام للمطورين ومحللي البيانات على حد سواء. مع json-formatter.app، يمكن للمستخدمين الوصول إلى أداة تنسيق JSON قوية لا تقوم فقط بالتنسيق ولكن أيضًا تتحقق من بيانات JSON، مما يضمن هيكلها بشكل صحيح وسهولة قراءتها.</p>
+        </div>
+        <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">ميزات json-formatter.app</h2>
+            <h3 class="bullet-title">تنسيق JSON عبر الإنترنت</h3>
+            <p>تقوم أداة تنسيق JSON تلقائيًا بتنظيم بيانات JSON، وتحويل النصوص غير المهيكلة إلى تنسيق سهل القراءة. تعزز هذه القدرة من قابلية القراءة وتساعد المستخدمين على تحديد المشكلات بسرعة داخل بيانات JSON الخاصة بهم. تعتبر أداة التنسيق JSON أداة أساسية لأي شخص يعمل مع JSON، خاصة للمطورين الذين يضمنون أن بياناتهم منظمة بشكل صحيح.</p>
+            <h3 class="bullet-title">نسخ بنقرة واحدة</h3>
+            <p>بمجرد التنسيق، تسمح أداة تنسيق JSON للمستخدمين بنسخ المخرجات بنقرة واحدة. تسهل هذه الميزة عملية نقل بيانات JSON المنسقة، مما يوفر الوقت والجهد. تكون كفاءة الأداة في نسخ النص المنسق لا تقدر بثمن للمستخدمين الذين يعملون مع كميات كبيرة من البيانات.</p>
+            <h3 class="bullet-title">رفع وتصحيح JSON الفاسد</h3>
+            <p>يمكن للمستخدمين رفع ملفات JSON تحتوي على أخطاء، وستقوم الأداة بتحليلها وتصحيحها. تعتبر هذه الميزة حرجة للمطورين الذين يتعاملون مع بيانات JSON الخارجية التي قد لا تكون مُشكلة بشكل صحيح. تزيد قدرة الأداة على استعادة ملفات JSON التالفة بشكل كبير من الإنتاجية.</p>
+            <h3 class="bullet-title">تنزيل JSON المنسق</h3>
+            <p>بعد استخدام أداة تنسيق JSON، يمكن للمستخدمين تنزيل JSON الخاص بهم بسهولة. تتيح هذه الميزة الوصول السريع إلى بيانات نظيفة جاهزة لمشاريع أو واجهات برمجة التطبيقات. تسهل أداة تنسيق JSON سير العمل بسلاسة، مما يضمن قدرة المستخدمين على إدارة ملفات JSON الخاصة بهم بسهولة.</p>
+            <h3 class="bullet-title">الوصول المتوافق مع الهاتف المحمول</h3>
+            <p>أداة تنسيق JSON متوافقة تمامًا، مما يسمح للمستخدمين بتنسيق والتحقق من بيانات JSON على الأجهزة المحمولة. تعتبر هذه الوصول إلى الهاتف المحمول ضرورية للمستخدمين الذين يفضلون العمل أثناء التنقل، مع الحفاظ على وظائف أداة التنسيق JSON عبر جميع الأجهزة.</p>
+        </div>
+        <img src="../Features.jpg" alt="Features" class="shadow">
+    </div>
+
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">كيفية استخدام json-formatter.app</h2>
+            <p>استخدام أداة تنسيق JSON على json-formatter.app بسيط وفعال. إليك كيفية الاستفادة القصوى من هذه الأداة:</p>
+            <ol>
+                <li><strong>زيارة الموقع الإلكتروني</strong>: انتقل إلى <a href="https://json-formatter.app/">json-formatter.app</a>. الواجهة متاحة لجميع المستخدمين.</li>
+                <li><strong>إدخال بيانات JSON</strong>: الصق نص JSON الخاص بك أو قم بتحميل ملف JSON. تستوعب أداة التنسيق كلا الطريقتين.</li>
+                <li><strong>تنسيق JSON</strong>: انقر على زر "تنسيق". ستقوم الأداة بمعالجة بياناتك، مما يجعلها سهلة القراءة.</li>
+                <li><strong>التحقق من JSON</strong>: استخدم ميزة "التحقق" للتأكد من أن JSON الخاص بك يتوافق مع المواصفات المطلوبة، مع تحديد أي أخطاء.</li>
+                <li><strong>نسخ وتنزيل</strong>: بعد التنسيق، استخدم ميزة النقرة الواحدة لنسخ JSON الخاص بك أو قم بتنزيله مباشرة. تسهل الأداة هذه العملية على المستخدمين.</li>
+            </ol>
+        </div>
+        <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">الأسئلة الشائعة - json-formatter.app</h2>
+            <p><strong>1. هل أداة تنسيق JSON مجانية للاستخدام؟</strong><br>نعم! أداة تنسيق JSON على json-formatter.app مجانية تمامًا، مما يسمح لأي شخص بتنسيق والتحقق من JSON دون تكاليف.</p>
+            <p><strong>2. هل أحتاج إلى حساب لاستخدام أداة تنسيق JSON؟</strong><br>لا يُطلب حساب لاستخدام الأداة، مما يضمن تجربة خالية من المتاعب.</p>
+            <p><strong>3. ما الأخطاء التي يمكن أن تجدها أداة تنسيق JSON؟</strong><br>تحدد الأداة القضايا مثل الفواصل المفقودة أو التنسيقات غير الصحيحة، مما يساعد المستخدمين على تصحيح JSON الخاص بهم بسرعة.</p>
+            <p><strong>4. هل أداة تنسيق JSON متوافقة مع الأجهزة المحمولة؟</strong><br>نعم، أداة تنسيق JSON مُحسنة للأجهزة المحمولة، مما يجعلها مريحة للمستخدمين أثناء التنقل.</p>
+            <p><strong>5. كيف تتعامل أداة تنسيق JSON مع الملفات JSON الفاسدة؟</strong><br>تقوم الأداة بتحليل الملفات المرفوعة، وتحديد الأخطاء، وتساعد في تصحيحها، وهو أمر بالغ الأهمية للمطورين.</p>
+            <p><strong>6. هل أداة تنسيق JSON متوافقة مع أنظمة التشغيل المختلفة؟</strong><br>بالطبع! تعمل الأداة على Windows وmacOS وLinux، وتتناسب مع جميع المتصفحات الرئيسية.</p>
+            <p><strong>7. هل يمكن لأداة تنسيق JSON تحويل الأنماط؟</strong><br>تدعم الأداة أيضًا التحويل إلى تنسيقات مثل XML وCSV، مما يوفر مرونة للمستخدمين.</p>
+        </div>
+        <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <h4>حول</h4>
+            <p><a href="https://json-formatter.app" target="_blank">JSON Formatter</a></p>
+            <p><a href="../json-parser/index.html" target="_blank">JSON Parser</a></p>
+            <p><a href="../json-to-xml/index.html" target="_blank">JSON to XML</a></p>
+            <p><a href="../json-to-csv/index.html" target="_blank">JSON to CSV</a></p>
+            <p><a href="../json-to-string/index.html" target="_blank">JSON to String</a></p>
+            <p><a href="../xml-formatter/index.html" target="_blank">XML Formatter</a></p>
+            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>شارك معنا</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app" target="_blank">LinkedIn</a></p>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app" target="_blank">X</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>وظائف</h4>
+            <p>أداة تنسيق JSON على <a href="https://json-formatter.app" target="_blank">json-formatter.app</a> هي أداة مجانية تقوم بتنسيق والتحقق من صحة JSON، مما يتيح نسخها بسهولة بنقرة واحدة.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © json-formatter.app 2025. All rights reserved. Experience the nostalgia with json-formatter.app</p>
+    </div>
+
+    <script>
+        function changeLanguage() {
+            const languageSelector = document.getElementById('language');
+            const selectedValue = languageSelector.value;
+            window.location.href = selectedValue;
+        }
+    </script>
+</body>
+</html>
