@@ -1,0 +1,487 @@
+<!--
+  Copyright (c) 2025 https://json-formatter.app
+  Released under the MIT License.
+  See LICENSE file in the project root for full license information.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online HTML Formatter Tool</title>
+    <link rel="icon" href="../final-logo.jpg" type="image/jpeg">
+    <meta name="description" content="json-formatter.app is the ultimate HTML formatter. Format, validate, and beautify your HTML data for easy sharing.">
+    <meta name="keywords" content="html formatter, format html, validate html, beautify html, online html tool">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://json-formatter.app/html-formatter/">
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="msvalidate.01" content="04DCEDB3C260CA03E26338ED34C9014B" />
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qqpppwc2v4");
+    </script>
+    <style>
+        body {
+            background-color: #a0e0e0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796d;
+            color: white;
+            padding: 5px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00796d;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #a0e0e0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 50px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+			position: relative;
+        }
+
+        .dropdown-button:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+		
+		.dropdown-button::after {
+            content: ' ▼'; /* 在按钮后添加下三角 */
+            font-size: 16px; /* 确保与文本大小一致 */
+            color: white; /* 下三角颜色 */
+        }
+		
+		.dropdown:hover .dropdown-button::after {
+            content: ''; /* 隐藏下三角 */
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 80px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 2px;
+        }
+
+        .language-selector {
+            margin-bottom: 5px;
+        }
+
+        .input-section {
+            margin-top: 2px;
+        }
+
+        .action-button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #005bb5;
+        }
+
+        .blue-green-button {
+            background-color: #009688;
+            color: white;
+        }
+
+        .blue-green-button:hover {
+            background-color: #00796b;
+        }
+
+        .content-box {
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h2.content-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .bullet-title {
+            position: relative;
+            padding-left: 20px;
+            line-height: 1;
+        }
+
+        .bullet-title::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: black;
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .shadow {
+            border-radius: 8px;
+            margin-left: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            height: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-column:nth-child(1) {
+            width: 45%;
+        }
+
+        .footer-column:nth-child(2) {
+            width: 25%;
+            text-align: left;
+        }
+
+        .footer-column:nth-child(3) {
+            width: 25%;
+        }
+
+        .footer-column {
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: white;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+        }
+
+        .footer-column p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-subcategory {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .footer-subcolumn {
+            width: 24%;
+        }
+
+        .footer-subcolumn h5 {
+            margin: 0 0 10px 0;
+            color: #a0e0e0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+        <div>
+            <div class="dropdown">
+                <button class="dropdown-button">Home</button>
+                <div class="dropdown-content">
+                    <a href="../index.html" target="_blank">JSON Formatter</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropdown-button">JSON</button>
+                <div class="dropdown-content">
+                    <a href="../json-parser/index.html" target="_blank">JSON Parser</a>
+                    <a href="../json-to-xml/index.html" target="_blank">JSON to XML</a>
+                    <a href="../json-to-csv/index.html" target="_blank">JSON to CSV</a>
+                    <a href="../json-to-string/index.html" target="_blank">JSON to String</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropdown-button">XML</button>
+                <div class="dropdown-content">
+                    <a href="../xml-formatter/index.html" target="_blank">XML Formatter</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropdown-button">HTML</button>
+                <div class="dropdown-content">
+                    <a href="index.html" target="_blank">HTML Formatter</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h1><img src="../final-logo.jpg" alt="Favicon"> Online HTML Formatter</h1>
+    
+    <div class="language-selector">
+        <label for="language"><strong>Select Language:</strong></label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="index.html">English</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="input-section">
+            <h2 id="inputTitle">Input HTML Text</h2>
+            <textarea id="inputHtml" rows="20" placeholder="Please enter unformatted HTML text"></textarea>
+            <button id="formatHtmlButton" class="action-button blue-green-button">Format HTML</button>
+            <div class="upload-section">
+                <h2 id="uploadTitle">Upload HTML File</h2>
+                <label id="fileLabel" for="htmlFile">Choose File</label>
+                <input type="file" id="htmlFile" accept=".html" style="display: none;">
+                <button id="uploadButton" class="action-button blue-green-button" onclick="document.getElementById('htmlFile').click();">Choose File</button>
+                <p id="fileStatus">No file selected</p>
+                <button id="uploadHtmlButton" class="action-button blue-green-button">Upload and Format</button>
+            </div>
+        </div>
+        <div class="output-section">
+            <h2 id="outputTitle">Formatted HTML Text</h2>
+            <pre id="outputHtml"></pre>
+            <button id="copyButton" class="action-button blue-green-button">Copy to Clipboard</button>
+            <div id="downloadLink" style="display:none;">
+                <p id="downloadText">Download formatted file:</p>
+                <a id="formattedFileLink" href="#" download>Download</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box about">
+        <div>
+            <h2 class="content-title">About the HTML Formatter</h2>
+            <p>The <strong>HTML formatter</strong> at json-formatter.app is specifically designed to facilitate the parsing and conversion of JSON (JavaScript Object Notation) to various formats efficiently. In modern web development, the ability to parse JSON is essential for seamless data interchange between applications, particularly when integrating with APIs. This free online tool simplifies the process of parsing and converting JSON, making it user-friendly for developers, data analysts, and anyone who regularly interacts with both JSON and other data formats. With <strong>json-formatter.app</strong>, users can access a powerful <strong>HTML formatter</strong> that not only formats JSON but also provides an effortless way to convert JSON to XML and CSV, ensuring that the data is structured correctly and easy to read. The versatility of this <strong>HTML formatter</strong> makes it a significant asset for users aiming to manage their JSON data transformations seamlessly. Additionally, this tool is open source and available for collaboration on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
+        </div>
+        <img src="../final-logo.jpg" alt="Final Logo" class="shadow">
+    </div>
+
+    <div class="content-box features">
+        <div>
+            <h2 class="content-title">Features of the HTML Formatter</h2>
+            <h3 class="bullet-title">Free Online JSON Parsing and Conversion</h3>
+            <p>The <strong>HTML formatter</strong> provides a completely free online service for parsing and converting JSON to various formats including XML and CSV, making this tool accessible to everyone. Users can easily transform poorly structured JSON data into a clean, readable format using the <strong>json formatter</strong>. This capability enhances readability and allows users to quickly identify any issues within their JSON data before conversion. The <strong>HTML formatter</strong> is an essential tool for anyone working with JSON conversions, especially for developers who need to ensure their data is accurately structured. By utilizing the <strong>HTML formatter</strong>, users can streamline their workflow significantly when converting between these formats. This tool is also open source, allowing for community contributions and improvements on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
+            
+            <h3 class="bullet-title">One-Click Copy Functionality</h3>
+            <p>Once the parsing and conversion from JSON to other formats is complete, the <strong>HTML formatter</strong> allows users to copy the output with a single click. This feature simplifies the process of transferring formatted data, saving both time and effort. The efficiency of the <strong>json formatter</strong> in copying formatted text is invaluable for users handling large datasets. Whether you’re a developer or a data analyst, the <strong>HTML formatter</strong> makes it easy to share clean and properly structured data, enhancing collaboration and productivity. Being open source, users can also contribute to its development at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
+            
+            <h3 class="bullet-title">Mobile-Friendly Access</h3>
+            <p>The <strong>HTML formatter</strong> is fully responsive, allowing users to parse and validate JSON data on mobile devices with ease. This mobile access is essential for users who prefer working on the go. Whether you are at your desk or using your smartphone, the <strong>HTML formatter</strong> ensures that you have the necessary tools to handle JSON conversions effectively, maintaining the functionality of the <strong>json formatter</strong> across all devices. As an open source tool, it can be found at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
+        </div>
+        <img src="../Features.jpg" alt="Features" class="shadow">
+    </div>
+
+    <div class="content-box usage">
+        <div>
+            <h2 class="content-title">How to Use the HTML Formatter</h2>
+            <p>Using the <strong>HTML formatter</strong> at json-formatter.app for JSON parsing and conversion is simple and efficient. Here's how you can maximize this <strong>json formatter</strong>:</p>
+            <ol>
+                <li><strong>Visit the Website</strong>: Go to <a href="https://json-formatter.app/">Json Formatter</a>. This free online tool has a user-friendly interface that is accessible for all users, making it a popular choice among those who require a reliable <strong>HTML formatter</strong> for JSON parsing and conversions.</li>
+                <li><strong>Input JSON Data</strong>: Paste your JSON text or upload a JSON file. The <strong>HTML formatter</strong> accommodates both methods, allowing users flexibility in preparing for JSON transformations. The <strong>json formatter</strong> makes it easy to format the input before conversion.</li>
+                <li><strong>Parse and Convert JSON</strong>: Click the “Convert” button. The <strong>HTML formatter</strong> will process your data, making it easy to read and identify any errors prior to conversion. This ensures a smooth transition from JSON to other formats.</li>
+                <li><strong>Validate JSON</strong>: Use the “Validate” feature to ensure your JSON meets all necessary specifications before conversion, identifying and correcting any errors. The <strong>HTML formatter</strong> provides quick feedback, enhancing user experience during the JSON parsing and conversion process.</li>
+                <li><strong>Copy and Download</strong>: After the conversion, utilize the one-click feature to copy your converted data or download it directly. The <strong>HTML formatter</strong> streamlines this process, making data management much easier when switching between data formats. This open source tool can be enhanced at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</li>
+            </ol>
+        </div>
+        <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
+    </div>
+
+    <div class="content-box faq">
+        <div>
+            <h2 class="content-title">Frequently Asked Questions - HTML Formatter</h2>
+            <p><strong>1. Is the HTML formatter free to use?</strong><br>Yes! The <strong>HTML formatter</strong> at json-formatter.app is completely free, allowing anyone to parse JSON and convert to XML and CSV without any costs. This free online service is also open source, available on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
+            <p><strong>2. Do I need an account for the HTML formatter?</strong><br>No account is required to use the <strong>HTML formatter</strong>, ensuring a hassle-free experience for all users when parsing and converting JSON.</p>
+            <p><strong>3. What errors can the HTML formatter find?</strong><br>The <strong>HTML formatter</strong> identifies issues such as missing commas or incorrect formats in JSON files, helping users correct their JSON promptly before conversion. The <strong>json formatter</strong> assists in this process by highlighting errors.</p>
+            <p><strong>4. Is the HTML formatter mobile-friendly?</strong><br>Yes, the <strong>HTML formatter</strong> is optimized for mobile devices, making it convenient for users on the go to parse and convert JSON efficiently.</p>
+            <p><strong>5. How does the HTML formatter handle corrupted JSON files?</strong><br>The <strong>HTML formatter</strong> analyzes uploaded files, identifies errors, and assists in correcting them, which is crucial for developers who rely on accurate JSON data for conversion.</p>
+            <p><strong>6. Is the HTML formatter compatible with different operating systems?</strong><br>Absolutely! The <strong>HTML formatter</strong> works on Windows, macOS, and Linux, and is compatible with all major browsers, ensuring a broad range of usability for JSON parsing and conversions.</p>
+            <p><strong>7. Can the HTML formatter convert to different formats?</strong><br>The <strong>HTML formatter</strong> also supports conversion to XML and CSV formats, providing versatility for users who need to work with different data formats, thus enhancing the overall JSON parsing and conversion process.</p>
+        </div>
+        <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <h4>Functionality</h4>
+            <div class="footer-subcategory">
+                <div class="footer-subcolumn">
+                    <h5>JSON</h5>
+                    <p><a href="../index.html" target="_blank">JSON-Formatter</a></p>
+                    <p><a href="../json-parser/index.html" target="_blank">JSON-Parser</a></p>
+                    <p><a href="../json-to-xml/index.html" target="_blank">JSON-to-XML</a></p>
+                    <p><a href="../json-to-csv/index.html" target="_blank">JSON-to-CSV</a></p>
+                    <p><a href="../json-to-string/index.html" target="_blank">JSON-to-String</a></p>
+                </div>
+                <div class="footer-subcolumn">
+                    <h5>XML</h5>
+                    <p><a href="../xml-formatter/index.html" target="_blank">XML-Formatter</a></p>
+                </div>
+                <div class="footer-subcolumn">
+                    <h5>HTML</h5>
+                    <p><a href="index.html" target="_blank">HTML-Formatter</a></p>
+                </div>
+                <div class="footer-subcolumn">
+                    <h5>About</h5>
+                    <p><a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">Github</a></p>
+                    <p><a href="https://yuvviewer.com/" title="YUV Viewer" target="_blank">YUV Viewer</a></p>
+                    <p><a href="https://baseconverter.org/" title="Base Converter" target="_blank">Base Converter</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4>Share Us</h4>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app/html-formatter/" target="_blank">Twitter</a></p>
+            <p><a href="https://www.facebook.com/sharer/sharer.php?u=https://json-formatter.app/html-formatter/" target="_blank">Facebook</a></p>
+            <p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://json-formatter.app/html-formatter/" target="_blank">LinkedIn</a></p>
+            <p><a href="https://twitter.com/intent/tweet?url=https://json-formatter.app/html-formatter/" target="_blank">X</a></p>
+            <p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
+        </div>
+        <div class="footer-column">
+            <h4>About</h4>
+            <p>The HTML formatter at <a href="https://json-formatter.app/html-formatter/" target="_blank">html-formatter</a> is a free tool that formats and validates HTML, enabling easy one-click copy.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Copyright © json-formatter.app 2025. All rights reserved. Experience the nostalgia with json-formatter.app</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.rawgit.com/vkiryukhin/vkbeautify/master/vkbeautify.js"></script>
+
+</body>
+</html>

@@ -78,10 +78,12 @@
             display: none;
             position: absolute;
             background-color: #00796d;
-            min-width: 160px;
+            min-width: 150px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 0;
         }
 
         .dropdown-content a {
@@ -102,17 +104,28 @@
         .dropdown-button {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 10px 50px;
             cursor: pointer;
             background: none;
             border: none;
             font-size: 16px;
             font-weight: bold;
+			position: relative;
         }
 
         .dropdown-button:hover {
             background-color: #a0e0e0;
             border-radius: 5px;
+        }
+		
+		.dropdown-button::after {
+            content: ' ▼';
+            font-size: 16px;
+            color: white;
+        }
+		
+		.dropdown:hover .dropdown-button::after {
+            content: '';
         }
 
         h1 {
@@ -336,7 +349,7 @@
             <div class="dropdown">
                 <button class="dropdown-button">HTML</button>
                 <div class="dropdown-content">
-                    <!-- TODO -->
+                    <a href="html-formatter/index.html" target="_blank">HTML Formatter</a>
                 </div>
             </div>
         </div>
