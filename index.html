@@ -15,10 +15,6 @@
     <meta name="keywords" content="json formatter, json beautifier, json validator, online json tool, format json, json converter">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://json-formatter.app/">
-    <link rel="alternate" hreflang="en" href="https://json-formatter.app/">
-    <link rel="alternate" hreflang="zh" href="https://json-formatter.app/ch/">
-    <link rel="alternate" hreflang="fr" href="https://json-formatter.app/fr/">
-    <link rel="alternate" hreflang="ar" href="https://json-formatter.app/ar/">
     <link rel="stylesheet" href="styles.css">
     <meta name="msvalidate.01" content="04DCEDB3C260CA03E26338ED34C9014B" />
     <script src="https://www.clarity.ms/tag/qqpppwc2v4" async></script>
@@ -36,6 +32,7 @@
             background-color: #a0e0e0;
             margin: 0;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         nav {
@@ -52,10 +49,16 @@
             align-items: center;
         }
 
-        nav a {
+        .left-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 15px 20px;
+            font-weight: bold;
         }
 
         nav a:hover {
@@ -67,6 +70,11 @@
             width: 30px;
             height: 30px;
             margin-right: 10px;
+        }
+
+        .right-nav {
+            display: flex;
+            align-items: center;
         }
 
         .dropdown {
@@ -182,7 +190,7 @@
         .content-box {
             background-color: #e0f7fa;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 20px auto;
             padding: 20px;
             display: flex;
             justify-content: space-between;
@@ -316,12 +324,34 @@
             color: #ccc;
             margin: 0;
         }
+
+		#About {
+            scroll-margin-top: 60px;
+        }
+		
+		#What {
+            scroll-margin-top: 60px;
+        }
+		
+		#FAQ {
+            scroll-margin-top: 60px;
+        }
+		
+		#ChangeLog {
+            scroll-margin-top: 60px;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html" target="_blank"><img src="final-logo.jpg" alt="Logo"></a>
-        <div>
+        <div class="left-nav">
+            <a href="index.html" target="_blank"><img src="final-logo.jpg" alt="Logo"></a>
+            <a href="index.html#About">About</a>
+            <a href="index.html#What">What</a>
+            <a href="index.html#FAQ">FAQ</a>
+            <a href="index.html#ChangeLog">ChangeLog</a>
+        </div>
+        <div class="right-nav">
             <div class="dropdown">
                 <button class="dropdown-button">Home</button>
                 <div class="dropdown-content">
@@ -361,9 +391,9 @@
         <label for="language"><strong>Select Language:</strong></label>
         <select id="language" onchange="changeLanguage()">
             <option value="index.html" selected>English</option>
-            <option value="ch/index.html" target="_blank">中文</option>
-            <option value="fr/index.html" target="_blank">Français</option>
-            <option value="ar/index.html" target="_blank">العربية</option>
+            <option value="ch/index.html">中文</option>
+            <option value="fr/index.html">Français</option>
+            <option value="ar/index.html">العربية</option>
         </select>
     </div>
 	<script>
@@ -398,15 +428,15 @@
         </div>
     </div>
 
-    <div class="content-box about">
+    <div class="content-box About" id="About">
         <div>
-            <h2 class="content-title">About the json-formatter.app</h2>
+            <h2>About the json-formatter.app</h2>
             <p>The <strong>json formatter</strong> at json-formatter.app is designed to handle JSON (JavaScript Object Notation) data efficiently. In the realm of web development, JSON is crucial for data interchange between applications and is widely used in APIs. This <strong>json formatter</strong> simplifies the process of formatting JSON, making it user-friendly for developers, data analysts, and anyone who regularly works with JSON data. With <strong>json-formatter.app</strong>, users can access a powerful <strong>json formatter</strong> that not only formats but also validates JSON data, ensuring it's correctly structured and easy to read. The versatility of this <strong>json formatter</strong> is a significant advantage for users looking to manage their JSON data effortlessly. Additionally, this tool is open source, available for collaboration and improvement on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-json-formatter</a>.</p>
         </div>
         <img src="final-logo.jpg" alt="Final Logo" class="shadow">
     </div>
-    
-    <div class="content-box features">
+	
+	<div class="content-box features">
         <div>
             <h2 class="content-title">Features of json-formatter.app</h2>
             <h3 class="bullet-title">Online JSON Formatting</h3>
@@ -422,7 +452,22 @@
         </div>
         <img src="Features.jpg" alt="Features" class="shadow">
     </div>
-    
+
+	<div class="content-box What" id="What">
+        <div>
+            <h2>What the JSON</h2>
+            <p>JSON, which stands for JavaScript Object Notation, is a widely used, language-independent data format that facilitates easy data interchange between systems. It is designed to be both human-readable and machine-readable, making it an excellent choice for representing structured information. JSON organizes data into key-value pairs, allowing developers to easily construct complex data structures while maintaining clarity. Its versatility means that it can be utilized across various programming languages, such as JavaScript, Python, PHP, Ruby, and Java, enabling seamless integration in diverse applications. For those looking to work with JSON data effectively, <strong>json-formatter.app</strong> offers a user-friendly platform for parsing, formatting, and converting JSON, simplifying the process of managing data and enhancing productivity.</p>
+            <p><strong>Refer to the following websites.</strong></p>
+			<p><a title="Visit json.org" href="http://json.org/">◉ json.org</a></p>
+			<p><a title="Visit wikipedia" href="https://en.wikipedia.org/wiki/JSON">◉ wikipedia-JSON</a></p>
+			<p><a title="Visit w3schools" href="https://www.w3schools.com/whatis/whatis_json.asp">◉ w3schools-what is json</a></p>
+			<p><a title="Visit geeksforgeeks" href="https://www.geeksforgeeks.org/what-is-json/">◉ geeksforgeeks-what is json</a></p>
+			<p><a title="Visit stackoverflow" href="https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-data-format-for-the-internet/">◉ stackoverflow-JSON Guide</a></p>
+			<p><a title="Visit bob.ippoli" href="http://bob.ippoli.to/archives/2005/12/05/remote-json-jsonp/">◉ bob.ippoli-json</a></p>
+		</div>
+        <img src="what-json.jpg" alt="What json" class="shadow">
+    </div>
+
     <div class="content-box usage">
         <div>
             <h2 class="content-title">How to Use json-formatter.app</h2>
@@ -438,7 +483,7 @@
         <img src="how-to-use.jpg" alt="How to Use" class="shadow">
     </div>
     
-    <div class="content-box faq">
+    <div class="content-box FAQ" id="FAQ">
         <div>
             <h2 class="content-title">Frequently Asked Questions - json-formatter.app</h2>
             <p><strong>1. Is the json formatter free to use?</strong><br>Yes! The <strong>json formatter</strong> at json-formatter.app is completely free, allowing anyone to format and validate JSON without costs. It is also open source, located at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-json-formatter</a>.</p>
@@ -450,6 +495,29 @@
             <p><strong>7. Can the json formatter convert formats?</strong><br>The <strong>json formatter</strong> also supports conversion to formats like XML and CSV, providing versatility for users who need to work with different data formats.</p>
         </div>
         <img src="FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+	
+	<div class="content-box ChangeLog" id="ChangeLog">
+        <div>
+            <h2>ChangeLog of json-formatter.app</h2>
+            <p>Web development has evolved from static HTML to dynamic, interactive applications, embracing frameworks and APIs. Explore the open-source project at <a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">GitHub - jsonformatter</a>.</p>
+		    <p><strong>● Mar 2025</strong></p>
+			<p>  - Add 1st version of json-formatter.app</p>
+			<p>  - Add Multilingual:ch/fr/ar</p>
+			<p>  - Add Webpage Usage Introduction</p>
+			<p>  - Introduction to Open Source Development</p>
+			<p>  - Add json-to-xml Function</p>
+			<p>  - Add json-to-csv Function</p>
+			<p>  - Bottom Bar Functionality: Share, Related Websites</p>
+			<p><strong>● Apr 2025</strong></p>
+			<p>  - Add json-to-string Function</p>
+			<p>  - Add json-parser Function</p>
+			<p>  - Add Top Bar Functionality</p>
+			<p>  - Amend Top Bar Functionality</p>
+			<p>  - Add xml-formatter Function</p>
+			<p>  - Add html-formatter Function</p>
+		</div>
+        <img src="final-logo.jpg" alt="Final Logo" class="shadow">
     </div>
 
     <div class="footer">
