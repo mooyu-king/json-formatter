@@ -28,6 +28,10 @@
         })(window, document, "clarity", "script", "qqpppwc2v4");
     </script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #a0e0e0;
             margin: 0;
@@ -42,7 +46,7 @@
             right: 0;
             background-color: #00796d;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
@@ -57,7 +61,7 @@
         .left-nav a {
             color: white;
             text-decoration: none;
-            padding: 15px 20px;
+            padding: 10px 20px;
             font-weight: bold;
         }
 
@@ -80,6 +84,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            margin-left: 10px;
         }
 
         .dropdown-content {
@@ -112,7 +117,7 @@
         .dropdown-button {
             color: white;
             text-decoration: none;
-            padding: 10px 50px;
+            padding: 10px 20px;
             cursor: pointer;
             background: none;
             border: none;
@@ -140,7 +145,7 @@
             text-align: center;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            margin: 80px 0 20px;
+            margin: 100px 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -157,44 +162,77 @@
         }
 
         .language-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .input-section, .output-section {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .input-section textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .upload-section {
+            margin-top: 20px;
+        }
+
+        .upload-section label {
+            display: block;
             margin-bottom: 5px;
         }
 
-        .input-section {
-            margin-top: 2px;
+        .upload-section button {
+            margin-top: 5px;
         }
 
-        .action-button {
-            background-color: #0072ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+        .output-section pre {
+            background-color: #f0f0f0;
+            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .action-button:hover {
-            background-color: #005bb5;
-        }
-
-        .blue-green-button {
-            background-color: #009688;
-            color: white;
-        }
-
-        .blue-green-button:hover {
-            background-color: #00796b;
+            overflow: auto;
+            max-height: 400px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .content-box {
             background-color: #e0f7fa;
             border-radius: 8px;
-            margin: 20px auto;
+            margin: 5px auto;
             padding: 20px;
+            max-width: 800px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .content-box div {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .content-box img.shadow {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
         }
 
         h2.content-title {
@@ -325,20 +363,29 @@
             margin: 0;
         }
 
-		#About {
+        #About, #What, #FAQ, #ChangeLog {
             scroll-margin-top: 60px;
         }
-		
-		#What {
-            scroll-margin-top: 60px;
-        }
-		
-		#FAQ {
-            scroll-margin-top: 60px;
-        }
-		
-		#ChangeLog {
-            scroll-margin-top: 60px;
+
+        @media (max-width: 768px) {
+            .content-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content-box div {
+                margin-right: 0;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .content-box img.shadow {
+                margin-left: 0;
+            }
+
+            .input-section, .output-section {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -428,7 +475,8 @@
         </div>
     </div>
 
-    <div class="content-box About" id="About">
+    <!-- About Section -->
+    <div class="content-box" id="About">
         <div>
             <h2>About the json-formatter.app</h2>
             <p>The <strong>json formatter</strong> at json-formatter.app is designed to handle JSON (JavaScript Object Notation) data efficiently. In the realm of web development, JSON is crucial for data interchange between applications and is widely used in APIs. This <strong>json formatter</strong> simplifies the process of formatting JSON, making it user-friendly for developers, data analysts, and anyone who regularly works with JSON data. With <strong>json-formatter.app</strong>, users can access a powerful <strong>json formatter</strong> that not only formats but also validates JSON data, ensuring it's correctly structured and easy to read. The versatility of this <strong>json formatter</strong> is a significant advantage for users looking to manage their JSON data effortlessly. Additionally, this tool is open source, available for collaboration and improvement on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-json-formatter</a>.</p>
@@ -453,7 +501,7 @@
         <img src="Features.jpg" alt="Features" class="shadow">
     </div>
 
-	<div class="content-box What" id="What">
+	<div class="content-box" id="What">
         <div>
             <h2>What the JSON</h2>
             <p>JSON, which stands for JavaScript Object Notation, is a widely used, language-independent data format that facilitates easy data interchange between systems. It is designed to be both human-readable and machine-readable, making it an excellent choice for representing structured information. JSON organizes data into key-value pairs, allowing developers to easily construct complex data structures while maintaining clarity. Its versatility means that it can be utilized across various programming languages, such as JavaScript, Python, PHP, Ruby, and Java, enabling seamless integration in diverse applications. For those looking to work with JSON data effectively, <strong>json-formatter.app</strong> offers a user-friendly platform for parsing, formatting, and converting JSON, simplifying the process of managing data and enhancing productivity.</p>
@@ -502,20 +550,21 @@
             <h2>ChangeLog of json-formatter.app</h2>
             <p>Web development has evolved from static HTML to dynamic, interactive applications, embracing frameworks and APIs. Explore the open-source project at <a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">GitHub - jsonformatter</a>.</p>
 		    <p><strong>● Mar 2025</strong></p>
-			<p>  - Add 1st version of json-formatter.app</p>
-			<p>  - Add Multilingual:ch/fr/ar</p>
-			<p>  - Add Webpage Usage Introduction</p>
-			<p>  - Introduction to Open Source Development</p>
-			<p>  - Add json-to-xml Function</p>
-			<p>  - Add json-to-csv Function</p>
-			<p>  - Bottom Bar Functionality: Share, Related Websites</p>
+			<p>  - Mar. 1st : Add 1st version of json-formatter.app</p>
+			<p>  - Mar. 3rd : Add Multilingual:ch/fr/ar</p>
+			<p>  - Mar. 7th : Add Webpage Usage Introduction</p>
+			<p>  - Mar. 12th : Introduction to Open Source Development</p>
+			<p>  - Mar. 17th : Add json-to-xml Function</p>
+			<p>  - Mar. 22nd : Add json-to-csv Function</p>
+			<p>  - Mar. 27th : Bottom Bar Functionality: Share, Related Websites</p>
 			<p><strong>● Apr 2025</strong></p>
-			<p>  - Add json-to-string Function</p>
-			<p>  - Add json-parser Function</p>
-			<p>  - Add Top Bar Functionality</p>
-			<p>  - Amend Top Bar Functionality</p>
-			<p>  - Add xml-formatter Function</p>
-			<p>  - Add html-formatter Function</p>
+			<p>  - Apr. 2nd : Add json-to-string Function</p>
+			<p>  - Apr. 3rd : Add json-parser Function</p>
+			<p>  - Apr. 4th : Add Top Bar Functionality</p>
+			<p>  - Apr. 5th : Amend Top Bar Functionality</p>
+			<p>  - Apr. 7th : Add xml-formatter Function</p>
+			<p>  - Apr. 9th : Add html-formatter Function</p>
+            <p>  - Apr. 10th : Adjust Function Area</p>
 		</div>
         <img src="change-log.jpg" alt="Change Log" class="shadow">
     </div>
