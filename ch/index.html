@@ -33,10 +33,15 @@
         })(window, document, "clarity", "script", "qqpppwc2v4");
     </script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #a0e0e0;
             margin: 0;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         nav {
@@ -46,17 +51,23 @@
             right: 0;
             background-color: #00796d;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        nav a {
+        .left-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
+            font-weight: bold;
         }
 
         nav a:hover {
@@ -70,9 +81,15 @@
             margin-right: 10px;
         }
 
+        .right-nav {
+            display: flex;
+            align-items: center;
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
+            margin-left: 10px;
         }
 
         .dropdown-content {
@@ -105,27 +122,28 @@
         .dropdown-button {
             color: white;
             text-decoration: none;
-            padding: 10px 50px;
+            padding: 10px 45px;
             cursor: pointer;
             background: none;
             border: none;
             font-size: 16px;
             font-weight: bold;
-			position: relative;
+            position: relative;
+            min-width: 120px;
         }
 
         .dropdown-button:hover {
             background-color: #a0e0e0;
             border-radius: 5px;
         }
-		
-		.dropdown-button::after {
+        
+        .dropdown-button::after {
             content: ' ▼';
             font-size: 16px;
             color: white;
         }
-		
-		.dropdown:hover .dropdown-button::after {
+        
+        .dropdown:hover .dropdown-button::after {
             content: '';
         }
 
@@ -133,7 +151,7 @@
             text-align: center;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            margin: 80px 0 20px;
+            margin: 100px 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,44 +168,77 @@
         }
 
         .language-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .input-section, .output-section {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .input-section textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .upload-section {
+            margin-top: 20px;
+        }
+
+        .upload-section label {
+            display: block;
             margin-bottom: 5px;
         }
 
-        .input-section {
-            margin-top: 2px;
+        .upload-section button {
+            margin-top: 5px;
         }
 
-        .action-button {
-            background-color: #0072ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+        .output-section pre {
+            background-color: #f0f0f0;
+            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .action-button:hover {
-            background-color: #005bb5;
-        }
-
-        .blue-green-button {
-            background-color: #009688;
-            color: white;
-        }
-
-        .blue-green-button:hover {
-            background-color: #00796b;
+            overflow: auto;
+            max-height: 400px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .content-box {
             background-color: #e0f7fa;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 5px auto;
             padding: 20px;
+            max-width: 800px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .content-box div {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .content-box img.shadow {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
         }
 
         h2.content-title {
@@ -317,12 +368,43 @@
             color: #ccc;
             margin: 0;
         }
+
+        #About, #What, #FAQ, #ChangeLog {
+            scroll-margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content-box div {
+                margin-right: 0;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .content-box img.shadow {
+                margin-left: 0;
+            }
+
+            .input-section, .output-section {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
-        <div>
+        <div class="left-nav">
+            <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+            <a href="index.html#About">About</a>
+            <a href="index.html#What">What</a>
+            <a href="index.html#FAQ">FAQ</a>
+            <a href="index.html#ChangeLog">ChangeLog</a>
+        </div>
+        <div class="right-nav">
             <div class="dropdown">
                 <button class="dropdown-button">Home</button>
                 <div class="dropdown-content">
@@ -367,7 +449,7 @@
             <option value="../ar/index.html">العربية</option>
         </select>
     </div>
-    
+
     <div class="container">
         <div class="input-section">
             <h2 id="inputTitle">输入 JSON 文本</h2>
@@ -392,7 +474,7 @@
         </div>
     </div>
 
-    <div class="content-box about">
+    <div class="content-box" id="About">
         <div>
             <h2 class="content-title">关于 json-formatter.app</h2>
             <p>json-formatter.app 的 JSON 格式化工具旨在高效处理 JSON（JavaScript 对象表示法）数据。在网站开发领域，JSON 对于应用程序之间的数据交换至关重要。这个 JSON 格式化工具简化了 JSON 的格式化过程，使其对于开发人员和数据分析师来说更加用户友好。通过 json-formatter.app，用户可以访问一个强大的 JSON 格式化工具，它不仅格式化，还验证 JSON 数据，确保其结构正确且易于阅读。</p>
@@ -417,6 +499,21 @@
         <img src="../Features.jpg" alt="Features" class="shadow">
     </div>
 
+    <div class="content-box" id="What">
+        <div>
+            <h2>什么是 JSON</h2>
+            <p>JSON，即JavaScript对象表示法，是一种广泛使用的、与语言无关的数据格式，它便于不同系统之间的数据交换。它设计为既可读于人类又可读于机器，使其成为表示结构化信息的理想选择。JSON将数据组织为键值对，使开发者能够轻松构建复杂的数据结构，同时保持清晰度。它的灵活性意味着可以在多种编程语言中使用，如JavaScript、Python、PHP、Ruby和Java，从而在不同应用中实现无缝集成。对于那些希望有效处理JSON数据的人来说，<strong>json-formatter.app</strong>提供了一个用户友好的平台，用于解析、格式化和转换JSON，简化数据管理的过程并提高生产力。</p>
+            <p><strong>请参考以下网站:</strong></p>
+            <p><a title="Visit json.org" href="http://json.org/">◉ json.org</a></p>
+            <p><a title="Visit wikipedia" href="https://en.wikipedia.org/wiki/JSON">◉ wikipedia-JSON</a></p>
+            <p><a title="Visit w3schools" href="https://www.w3schools.com/whatis/whatis_json.asp">◉ w3schools-what is json</a></p>
+            <p><a title="Visit geeksforgeeks" href="https://www.geeksforgeeks.org/what-is-json/">◉ geeksforgeeks-what is json</a></p>
+            <p><a title="Visit stackoverflow" href="https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-data-format-for-the-internet/">◉ stackoverflow-JSON Guide</a></p>
+            <p><a title="Visit bob.ippoli" href="http://bob.ippoli.to/archives/2005/12/05/remote-json-jsonp/">◉ bob.ippoli-json</a></p>
+        </div>
+        <img src="../what-json.jpg" alt="What json" class="shadow">
+    </div>
+
     <div class="content-box usage">
         <div>
             <h2 class="content-title">如何使用 json-formatter.app</h2>
@@ -432,7 +529,7 @@
         <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
     </div>
 
-    <div class="content-box faq">
+    <div class="content-box FAQ" id="FAQ">
         <div>
             <h2 class="content-title">常见问题 - json-formatter.app</h2>
             <p><strong>1. 这个 JSON 格式化工具是免费使用的吗？</strong><br>是的！在 json-formatter.app 上的 JSON 格式化工具完全免费，允许任何人格式化和验证 JSON。</p>
@@ -444,6 +541,31 @@
             <p><strong>7. 这个 JSON 格式化工具能转换格式吗？</strong><br>JSON 格式化工具还支持转换为 XML 和 CSV 等格式，为用户提供灵活性。</p>
         </div>
         <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="content-box ChangeLog" id="ChangeLog">
+        <div>
+            <h2>json-formatter.app 的变更日志</h2>
+            <p>网页开发已从静态 HTML 演变为动态、互动的应用程序，采用框架和 API。请在 <a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">GitHub - jsonformatter</a> 探索开源项目。</p>
+            <p><strong>● 2025年3月</strong></p>
+            <p>  - 3月1日：添加 json-formatter.app 的第一个版本</p>
+            <p>  - 3月3日：添加多语言支持：中文/法文/阿拉伯文</p>
+            <p>  - 3月7日：添加网页使用简介</p>
+            <p>  - 3月12日：开源开发简介</p>
+            <p>  - 3月17日：添加 json 转 xml 功能</p>
+            <p>  - 3月22日：添加 json 转 csv 功能</p>
+            <p>  - 3月27日：底部栏功能：分享、相关网站</p>
+            <p><strong>● 2025年4月</strong></p>
+            <p>  - 4月2日：添加 json 转字符串功能</p>
+            <p>  - 4月3日：添加 json 解析器功能</p>
+            <p>  - 4月4日：添加顶部栏功能</p>
+            <p>  - 4月5日：修改顶部栏功能</p>
+            <p>  - 4月7日：添加 xml 格式化功能</p>
+            <p>  - 4月9日：添加 html 格式化功能</p>
+            <p>  - 4月10日：调整功能区域</p>
+            <p>  - 4月12日：添加清晰度方法</p>
+        </div>
+        <img src="../change-log.jpg" alt="Change Log" class="shadow">
     </div>
 
     <div class="footer">
