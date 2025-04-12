@@ -5,7 +5,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,10 +33,15 @@
         })(window, document, "clarity", "script", "qqpppwc2v4");
     </script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #a0e0e0;
             margin: 0;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         nav {
@@ -46,17 +51,23 @@
             right: 0;
             background-color: #00796d;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        nav a {
+        .left-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
+            font-weight: bold;
         }
 
         nav a:hover {
@@ -70,11 +81,77 @@
             margin-right: 10px;
         }
 
+        .right-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00796d;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #a0e0e0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 45px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            position: relative;
+            min-width: 120px;
+        }
+
+        .dropdown-button:hover {
+            background-color: #a0e0e0;
+            border-radius: 5px;
+        }
+        
+        .dropdown-button::after {
+            content: ' ▼';
+            font-size: 16px;
+            color: white;
+        }
+        
+        .dropdown:hover .dropdown-button::after {
+            content: '';
+        }
+
         h1 {
             text-align: center;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            margin: 80px 0 20px;
+            margin: 100px 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -91,44 +168,77 @@
         }
 
         .language-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .input-section, .output-section {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .input-section textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .upload-section {
+            margin-top: 20px;
+        }
+
+        .upload-section label {
+            display: block;
             margin-bottom: 5px;
         }
 
-        .input-section {
-            margin-top: 2px;
+        .upload-section button {
+            margin-top: 5px;
         }
 
-        .action-button {
-            background-color: #0072ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+        .output-section pre {
+            background-color: #f0f0f0;
+            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .action-button:hover {
-            background-color: #005bb5;
-        }
-
-        .blue-green-button {
-            background-color: #009688;
-            color: white;
-        }
-
-        .blue-green-button:hover {
-            background-color: #00796b;
+            overflow: auto;
+            max-height: 400px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .content-box {
             background-color: #e0f7fa;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 5px auto;
             padding: 20px;
+            max-width: 800px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .content-box div {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .content-box img.shadow {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
         }
 
         h2.content-title {
@@ -184,16 +294,32 @@
             text-align: left;
         }
 
+        .footer-column:nth-child(1) {
+            width: 45%;
+        }
+
+        .footer-column:nth-child(2) {
+            width: 25%;
+            text-align: left;
+        }
+
+        .footer-column:nth-child(3) {
+            width: 25%;
+        }
+
         .footer-column {
-            width: 30%;
             margin-bottom: 20px;
         }
 
         .footer-column h4 {
-            margin: 0;
+            margin: 0 0 15px 0;
             padding: 0;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 700;
             line-height: 1.5;
+            color: white;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
         }
 
         .footer-column p {
@@ -208,6 +334,23 @@
 
         .footer a:hover {
             text-decoration: underline;
+        }
+
+        .footer-subcategory {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .footer-subcolumn {
+            width: 24%;
+        }
+
+        .footer-subcolumn h5 {
+            margin: 0 0 10px 0;
+            color: #a0e0e0;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .footer-bottom {
@@ -225,18 +368,73 @@
             color: #ccc;
             margin: 0;
         }
+
+        #About, #What, #FAQ, #ChangeLog {
+            scroll-margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content-box div {
+                margin-right: 0;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .content-box img.shadow {
+                margin-left: 0;
+            }
+
+            .input-section, .output-section {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
-        <div>
-            <a href="../index.html" target="_blank"><strong>Home</strong></a>
-            <a href="../json-parser/index.html" target="_blank"><strong>JSON Parser</strong></a>
-            <a href="../json-to-xml/index.html" target="_blank"><strong>JSON to XML</strong></a>
-            <a href="../json-to-csv/index.html" target="_blank"><strong>JSON to CSV</strong></a>
-            <a href="../json-to-string/index.html" target="_blank"><strong>JSON to String</strong></a>
-            <a href="../xml-formatter/index.html" target="_blank"><strong>XML Formatter</strong></a>
+        <div class="left-nav">
+            <a href="../index.html" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+            <a href="index.html#About">About</a>
+            <a href="index.html#What">What</a>
+            <a href="index.html#FAQ">FAQ</a>
+            <a href="index.html#ChangeLog">ChangeLog</a>
+        </div>
+        <div class="right-nav">
+            <div class="dropdown">
+                <button class="dropdown-button">Home</button>
+                <div class="dropdown-content">
+                    <a href="../index.html">JSON Formatter</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropdown-button">JSON</button>
+                <div class="dropdown-content">
+                    <a href="../json-parser/index.html" target="_blank">JSON Parser</a>
+                    <a href="../json-to-xml/index.html" target="_blank">JSON to XML</a>
+                    <a href="../json-to-csv/index.html" target="_blank">JSON to CSV</a>
+                    <a href="../json-to-string/index.html" target="_blank">JSON to String</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropdown-button">XML</button>
+                <div class="dropdown-content">
+                    <a href="../xml-formatter/index.html" target="_blank">XML Formatter</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropdown-button">HTML</button>
+                <div class="dropdown-content">
+                    <a href="../html-formatter/index.html" target="_blank">HTML Formatter</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -276,7 +474,7 @@
         </div>
     </div>
 
-    <div class="content-box about">
+    <div class="content-box" id="About">
         <div>
             <h2 class="content-title">À propos de json-formatter.app</h2>
             <p>Le formatteur JSON sur json-formatter.app est conçu pour gérer efficacement les données JSON (JavaScript Object Notation). Dans le domaine du développement web, JSON est crucial pour l'échange de données entre applications. Ce formatteur JSON simplifie le processus de formatage des JSON, le rendant convivial pour les développeurs et les analystes de données. Avec json-formatter.app, les utilisateurs ont accès à un puissant formatteur JSON qui non seulement formate mais valide également les données JSON, garantissant qu'elles sont correctement structurées et faciles à lire.</p>
@@ -301,6 +499,21 @@
         <img src="../Features.jpg" alt="Features" class="shadow">
     </div>
 
+    <div class="content-box" id="What">
+        <div>
+            <h2>Qu'est-ce que JSON</h2>
+            <p>JSON, qui signifie JavaScript Object Notation, est un format de données largement utilisé et indépendant du langage qui facilite l'échange de données entre les systèmes. Il est conçu pour être à la fois lisible par l'homme et lisible par la machine, ce qui en fait un excellent choix pour représenter des informations structurées. JSON organise les données en paires clé-valeur, permettant aux développeurs de construire facilement des structures de données complexes tout en maintenant la clarté. Sa polyvalence signifie qu'il peut être utilisé dans divers langages de programmation, tels que JavaScript, Python, PHP, Ruby et Java, permettant une intégration fluide dans diverses applications. Pour ceux qui souhaitent travailler efficacement avec des données JSON, <strong>json-formatter.app</strong> offre une plateforme conviviale pour analyser, formater et convertir JSON, simplifiant le processus de gestion des données et améliorant la productivité.</p>            <p><strong>请参考以下网站:</strong></p>
+            <p><strong>Se référer aux sites Web suivants.</strong></p>
+            <p><a title="Visit json.org" href="http://json.org/">◉ json.org</a></p>
+            <p><a title="Visit wikipedia" href="https://en.wikipedia.org/wiki/JSON">◉ wikipedia-JSON</a></p>
+            <p><a title="Visit w3schools" href="https://www.w3schools.com/whatis/whatis_json.asp">◉ w3schools-what is json</a></p>
+            <p><a title="Visit geeksforgeeks" href="https://www.geeksforgeeks.org/what-is-json/">◉ geeksforgeeks-what is json</a></p>
+            <p><a title="Visit stackoverflow" href="https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-data-format-for-the-internet/">◉ stackoverflow-JSON Guide</a></p>
+            <p><a title="Visit bob.ippoli" href="http://bob.ippoli.to/archives/2005/12/05/remote-json-jsonp/">◉ bob.ippoli-json</a></p>
+        </div>
+        <img src="../what-json.jpg" alt="What json" class="shadow">
+    </div>
+
     <div class="content-box usage">
         <div>
             <h2 class="content-title">Comment utiliser json-formatter.app</h2>
@@ -316,7 +529,7 @@
         <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
     </div>
 
-    <div class="content-box faq">
+    <div class="content-box FAQ" id="FAQ">
         <div>
             <h2 class="content-title">Questions Fréquemment Posées - json-formatter.app</h2>
             <p><strong>1. Le formatteur JSON est-il gratuit ?</strong><br>Oui ! Le formatteur JSON sur json-formatter.app est totalement gratuit, permettant à quiconque de formater et de valider des JSON sans coûts.</p>
@@ -330,16 +543,58 @@
         <img src="../FAQ.jpg" alt="FAQ" class="shadow">
     </div>
 
+    <div class="content-box ChangeLog" id="ChangeLog">
+        <div>
+            <h2>ChangeLog de json-formatter.app</h2>
+            <p>Le développement web a évolué d'un HTML statique à des applications dynamiques et interactives, embrassant des frameworks et des API. Explorez le projet open-source sur <a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">GitHub - jsonformatter</a>.</p>
+            <p><strong>● Mar 2025</strong></p>
+            <p>  - 1er Mar. : Ajout de la 1ère version de json-formatter.app</p>
+            <p>  - 3 Mar. : Ajout Multilingue : ch/fr/ar</p>
+            <p>  - 7 Mar. : Ajout d'une Introduction à l'Utilisation de la Page Web</p>
+            <p>  - 12 Mar. : Introduction au Développement Open Source</p>
+            <p>  - 17 Mar. : Ajout de la Fonction json-to-xml</p>
+            <p>  - 22 Mar. : Ajout de la Fonction json-to-csv</p>
+            <p>  - 27 Mar. : Fonctionnalité de la Barre Inférieure : Partager, Sites Web Connus</p>
+            <p><strong>● Avr 2025</strong></p>
+            <p>  - 2 Avr. : Ajout de la Fonction json-to-string</p>
+            <p>  - 3 Avr. : Ajout de la Fonction json-parser</p>
+            <p>  - 4 Avr. : Ajout de la Fonctionnalité de la Barre Supérieure</p>
+            <p>  - 5 Avr. : Amendement de la Fonctionnalité de la Barre Supérieure</p>
+            <p>  - 7 Avr. : Ajout de la Fonction xml-formatter</p>
+            <p>  - 9 Avr. : Ajout de la Fonction html-formatter</p>
+            <p>  - 10 Avr. : Ajustement de la Zone de Fonctionnalité</p>
+            <p>  - 12 Avr. : Ajout de la Méthode Clarity</p>
+        </div>
+        <img src="../change-log.jpg" alt="Change Log" class="shadow">
+    </div>
+
     <div class="footer">
         <div class="footer-column">
             <h4>Fonctionnalité</h4>
-            <p><a href="../index.html" target="_blank">JSON Formatter</a></p>
-            <p><a href="../json-parser/index.html" target="_blank">JSON Parser</a></p>
-            <p><a href="../json-to-xml/index.html" target="_blank">JSON to XML</a></p>
-            <p><a href="../json-to-csv/index.html" target="_blank">JSON to CSV</a></p>
-            <p><a href="../json-to-string/index.html" target="_blank">JSON to String</a></p>
-            <p><a href="../xml-formatter/index.html" target="_blank">XML Formatter</a></p>
-            <p><a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github</a></p>
+            <div class="footer-subcategory">
+                <div class="footer-subcolumn">
+                    <h5>JSON</h5>
+                    <p><a href="../index.html" target="_blank">JSON-Formatter</a></p>
+                    <p><a href="../json-parser/index.html" target="_blank">JSON-Parser</a></p>
+                    <p><a href="../json-to-xml/index.html" target="_blank">JSON-to-XML</a></p>
+                    <p><a href="../json-to-csv/index.html" target="_blank">JSON-to-CSV</a></p>
+                    <p><a href="../json-to-string/index.html" target="_blank">JSON-to-String</a></p>
+                </div>
+                <div class="footer-subcolumn">
+                    <h5>XML</h5>
+                    <p><a href="../xml-formatter/index.html" target="_blank">XML-Formatter</a></p>
+                </div>
+                <div class="footer-subcolumn">
+                    <h5>HTML</h5>
+                    <p><a href="../html-formatter/index.html" target="_blank">HTML-Formatter</a></p>
+                </div>
+                <div class="footer-subcolumn">
+                    <h5>About</h5>
+                    <p><a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">Github</a></p>
+                    <p><a href="https://yuvviewer.com/" title="YUV Viewer" target="_blank">YUV Viewer</a></p>
+                    <p><a href="https://baseconverter.org/" title="Base Converter" target="_blank">Base Converter</a></p>
+                </div>
+            </div>
         </div>
         <div class="footer-column">
             <h4>Partagez-nous</h4>
