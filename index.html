@@ -417,6 +417,25 @@
             }
         }
     </style>
+    <script>
+        function formatAndScroll() {
+            if (typeof formatJson === 'function') {
+                formatJson();
+            }
+
+            const outputTitle = document.getElementById('outputTitle');
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            if (outputTitle) {
+                const outputPosition = outputTitle.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                window.scrollTo({
+                    top: outputPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
 </head>
 <body>
     <nav>
@@ -484,7 +503,13 @@
         <div class="input-section">
             <h2 id="inputTitle">Input JSON Text</h2>
             <textarea id="inputJson" rows="20" placeholder="Please enter unformatted JSON text"></textarea>
-            <button id="formatJsonButton" class="action-button blue-green-button" style="font-weight: bold;">Format JSON</button>
+            <button
+                id="formatJsonButton"
+                class="action-button blue-green-button"
+                style="font-weight: bold;"
+                onclick="formatAndScroll()">
+                    Format JSON
+            </button>
             <div class="upload-section">
                 <h2 id="uploadTitle">Upload JSON File</h2>
                 <label id="fileLabel" for="jsonFile">Choose File</label>
@@ -595,6 +620,7 @@
             <p>  - Apr. 9th : Add html-formatter Function</p>
             <p>  - Apr. 10th : Adjust Function Area</p>
             <p>  - Apr. 12th : Add Clarity Method</p>
+            <p>  - Apr. 13th : Perfect the button 'Format JSON' click for automatic redirection</p>
         </div>
         <img src="change-log.jpg" alt="Change Log" class="shadow">
     </div>
