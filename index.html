@@ -436,6 +436,54 @@
             }
         }
     </script>
+    <script>
+        function copyToClipboard() {
+            const output = document.getElementById('outputJson').innerText;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(output).then(function() {
+                    showCopyMessage();
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            } else {
+                let textArea = document.createElement("textarea");
+                textArea.value = output;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopyMessage();
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                textArea.remove();
+            }
+        }
+
+        function showCopyMessage() {
+            let message = document.getElementById('copyMessage');
+            if (!message) {
+                message = document.createElement('span');
+                message.id = 'copyMessage';
+                message.textContent = 'Copied successfully';
+                message.style.marginLeft = '10px';
+                message.style.color = 'green';
+                message.style.fontWeight = 'bold';
+                document.getElementById('copyButton').after(message);
+            } else {
+                message.textContent = 'Copied successfully';
+                message.style.display = 'inline';
+            }
+
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+
 </head>
 <body>
     <nav>
@@ -522,7 +570,7 @@
         <div class="output-section">
             <h2 id="outputTitle">Formatted JSON Text</h2>
             <pre id="outputJson"></pre>
-            <button id="copyButton" class="action-button blue-green-button">Copy to Clipboard</button>
+            <button id="copyButton" class="action-button blue-green-button" onclick="copyToClipboard()">Copy to Clipboard</button>
             <div id="downloadLink" style="display:none;">
                 <p id="downloadText">Download formatted file:</p> <a id="formattedFileLink" href="#" download></a>
             </div>
