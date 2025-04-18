@@ -32,10 +32,15 @@
         })(window, document, "clarity", "script", "qqpppwc2v4");
     </script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #a0e0e0;
             margin: 0;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
         nav {
@@ -45,17 +50,23 @@
             right: 0;
             background-color: #00796d;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        nav a {
+        .left-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
+            font-weight: bold;
         }
 
         nav a:hover {
@@ -69,9 +80,15 @@
             margin-right: 10px;
         }
 
+        .right-nav {
+            display: flex;
+            align-items: center;
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
+            margin-left: 10px;
         }
 
         .dropdown-content {
@@ -104,27 +121,28 @@
         .dropdown-button {
             color: white;
             text-decoration: none;
-            padding: 10px 50px;
+            padding: 10px 45px;
             cursor: pointer;
             background: none;
             border: none;
             font-size: 16px;
             font-weight: bold;
-			position: relative;
+            position: relative;
+            min-width: 120px;
         }
 
         .dropdown-button:hover {
             background-color: #a0e0e0;
             border-radius: 5px;
         }
-		
-		.dropdown-button::after {
+        
+        .dropdown-button::after {
             content: ' ▼';
             font-size: 16px;
             color: white;
         }
-		
-		.dropdown:hover .dropdown-button::after {
+        
+        .dropdown:hover .dropdown-button::after {
             content: '';
         }
 
@@ -132,7 +150,7 @@
             text-align: center;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            margin: 80px 0 20px;
+            margin: 100px 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -149,44 +167,77 @@
         }
 
         .language-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .input-section, .output-section {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .input-section textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .upload-section {
+            margin-top: 20px;
+        }
+
+        .upload-section label {
+            display: block;
             margin-bottom: 5px;
         }
 
-        .input-section {
-            margin-top: 2px;
+        .upload-section button {
+            margin-top: 5px;
         }
 
-        .action-button {
-            background-color: #0072ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+        .output-section pre {
+            background-color: #f0f0f0;
+            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .action-button:hover {
-            background-color: #005bb5;
-        }
-
-        .blue-green-button {
-            background-color: #009688;
-            color: white;
-        }
-
-        .blue-green-button:hover {
-            background-color: #00796b;
+            overflow: auto;
+            max-height: 400px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .content-box {
             background-color: #e0f7fa;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 5px auto;
             padding: 20px;
+            max-width: 800px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .content-box div {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .content-box img.shadow {
+            width: 100px;
+            height: auto;
+            flex-shrink: 0;
         }
 
         h2.content-title {
@@ -316,12 +367,43 @@
             color: #ccc;
             margin: 0;
         }
+
+        #About, #What, #FAQ, #ChangeLog {
+            scroll-margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content-box div {
+                margin-right: 0;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .content-box img.shadow {
+                margin-left: 0;
+            }
+
+            .input-section, .output-section {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="https://json-formatter.app/" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
-        <div>
+        <div class="left-nav">
+            <a href="https://json-formatter.app/" target="_blank"><img src="../final-logo.jpg" alt="Logo"></a>
+            <a href="https://json-formatter.app/html-formatter/#About">About</a>
+            <a href="https://json-formatter.app/html-formatter/#What">What</a>
+            <a href="https://json-formatter.app/html-formatter/#FAQ">FAQ</a>
+            <a href="https://json-formatter.app/html-formatter/#ChangeLog">ChangeLog</a>
+        </div>
+        <div class="right-nav">
             <div class="dropdown">
                 <button class="dropdown-button">Home</button>
                 <div class="dropdown-content">
@@ -389,7 +471,7 @@
         </div>
     </div>
 
-    <div class="content-box about">
+    <div class="content-box" id="About">
         <div>
             <h2 class="content-title">About the HTML Formatter</h2>
             <p>The <strong>HTML formatter</strong> at json-formatter.app is specifically designed to facilitate the parsing and conversion of JSON (JavaScript Object Notation) to various formats efficiently. In modern web development, the ability to parse JSON is essential for seamless data interchange between applications, particularly when integrating with APIs. This free online tool simplifies the process of parsing and converting JSON, making it user-friendly for developers, data analysts, and anyone who regularly interacts with both JSON and other data formats. With <strong>json-formatter.app</strong>, users can access a powerful <strong>HTML formatter</strong> that not only formats JSON but also provides an effortless way to convert JSON to XML and CSV, ensuring that the data is structured correctly and easy to read. The versatility of this <strong>HTML formatter</strong> makes it a significant asset for users aiming to manage their JSON data transformations seamlessly. Additionally, this tool is open source and available for collaboration on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
@@ -412,6 +494,18 @@
         <img src="../Features.jpg" alt="Features" class="shadow">
     </div>
 
+    <div class="content-box" id="What">
+        <div>
+            <h2>What is HTML</h2>
+            <p>HTML, or HyperText Markup Language, is the standard markup language used for creating and designing documents on the World Wide Web. It provides the fundamental structure of web pages, enabling developers to organize content with elements such as headings, paragraphs, links, images, and multimedia. HTML is designed to be both human-readable and machine-readable, making it accessible for web developers while ensuring that web browsers can interpret and display the content correctly. With the use of various tags and attributes, HTML allows for the creation of intricate layouts and interactive features, forming the backbone of modern web applications. Furthermore, its compatibility with CSS (Cascading Style Sheets) and JavaScript enhances its capabilities, enabling the development of visually appealing and dynamic websites. For those looking to streamline their HTML management process, <strong><a href="https://json-formatter.app/" target="_blank">JSON Formatter</a></strong> offers a user-friendly tool for parsing, formatting, and converting HTML, improving efficiency and productivity in web development.</p>            <p><a title="XML Introduction - W3Schools" href="https://www.w3schools.com/XML/xml_whatis.asp">◉ XML Introduction - W3Schools</a></p>
+            <p><a title="What is HTML - Freecodecamp" href="https://www.freecodecamp.org/news/what-is-html-definition-and-meaning/">◉ What is HTML - Freecodecamp</a></p>
+            <p><a title="HTML Introduction - w3schools" href="https://www.w3schools.com/html/html_intro.asp">◉ HTML Introduction - w3schools</a></p>
+            <p><a title="What is HTML - geeksforgeeks" href="https://www.geeksforgeeks.org/what-is-html/">◉ What is HTML - geeksforgeeks</a></p>
+            <p><a title="HTML: HyperText Markup Language" href="https://developer.mozilla.org/en-US/docs/Web/HTML">◉ HTML: HyperText Markup Language</a></p>
+        </div>
+        <img src="../what-json.jpg" alt="What json" class="shadow">
+    </div>
+
     <div class="content-box usage">
         <div>
             <h2 class="content-title">How to Use the HTML Formatter</h2>
@@ -427,7 +521,7 @@
         <img src="../how-to-use.jpg" alt="How to Use" class="shadow">
     </div>
 
-    <div class="content-box faq">
+    <div class="content-box FAQ" id="FAQ">
         <div>
             <h2 class="content-title">Frequently Asked Questions - HTML Formatter</h2>
             <p><strong>1. Is the HTML formatter free to use?</strong><br>Yes! The <strong>HTML formatter</strong> at json-formatter.app is completely free, allowing anyone to parse JSON and convert to XML and CSV without any costs. This free online service is also open source, available on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
@@ -439,6 +533,31 @@
             <p><strong>7. Can the HTML formatter convert to different formats?</strong><br>The <strong>HTML formatter</strong> also supports conversion to XML and CSV formats, providing versatility for users who need to work with different data formats, thus enhancing the overall JSON parsing and conversion process.</p>
         </div>
         <img src="../FAQ.jpg" alt="FAQ" class="shadow">
+    </div>
+
+    <div class="content-box ChangeLog" id="ChangeLog">
+        <div>
+            <h2>ChangeLog of json-formatter.app</h2>
+            <p>Web development has evolved from static HTML to dynamic, interactive applications, embracing frameworks and APIs. Explore the open-source project at <a href="https://github.com/mooyu-king/json-formatter" title="Github" target="_blank">GitHub - jsonformatter</a>.</p>
+            <p><strong>● Mar 2025</strong></p>
+            <p>  - Mar. 1st : Add 1st version of json-formatter.app</p>
+            <p>  - Mar. 3rd : Add Multilingual:ch/fr/ar</p>
+            <p>  - Mar. 7th : Add Webpage Usage Introduction</p>
+            <p>  - Mar. 12th : Introduction to Open Source Development</p>
+            <p>  - Mar. 17th : Add json-to-xml Function</p>
+            <p>  - Mar. 22nd : Add json-to-csv Function</p>
+            <p>  - Mar. 27th : Bottom Bar Functionality: Share, Related Websites</p>
+            <p><strong>● Apr 2025</strong></p>
+            <p>  - Apr. 2nd : Add json-to-string Function</p>
+            <p>  - Apr. 3rd : Add json-parser Function</p>
+            <p>  - Apr. 4th : Add Top Bar Functionality</p>
+            <p>  - Apr. 5th : Amend Top Bar Functionality</p>
+            <p>  - Apr. 7th : Add xml-formatter Function</p>
+            <p>  - Apr. 9th : Add html-formatter Function</p>
+            <p>  - Apr. 10th : Adjust Function Area</p>
+            <p>  - Apr. 12th : Add Clarity Method</p>
+        </div>
+        <img src="../change-log.jpg" alt="Change Log" class="shadow">
     </div>
 
     <div class="footer">
