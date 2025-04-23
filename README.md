@@ -1,6 +1,6 @@
 # json-formatter.app - Powerful Online JSON Formatter and Validator
 
-![json-formatter](final-logo.jpg "json-formatter.app")
+![json-formatter](json-formatter-logo.jpg "json-formatter.app")
 
 👉👉 Click to use json-formatter，1st Version: [json-formatter.app](https://json-formatter.app/ "json-formatter.app")
 
