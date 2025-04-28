@@ -147,6 +147,21 @@
             content: '';
         }
 
+        .action-button {
+            background-color: #00796d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .action-button:hover {
+            background-color: #004d40;
+        }
+
         h1 {
             text-align: center;
             font-family: Arial, sans-serif;
@@ -216,6 +231,12 @@
             max-height: 400px;
             white-space: pre-wrap;
             word-wrap: break-word;
+            margin-bottom: 60px;
+        }
+
+        #copyButton {
+            display: block;
+            margin-top: 10px;
         }
 
         .content-box {
@@ -394,6 +415,73 @@
             }
         }
     </style>
+    <script>
+        function formatAndScroll() {
+            if (typeof formatJson === 'function') {
+                formatJson();
+            }
+
+            const outputTitle = document.getElementById('outputTitle');
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            if (outputTitle) {
+                const outputPosition = outputTitle.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                window.scrollTo({
+                    top: outputPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+    <script>
+        function copyToClipboard() {
+            const output = document.getElementById('outputJson').innerText;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(output).then(function() {
+                    showCopyMessage();
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            } else {
+                let textArea = document.createElement("textarea");
+                textArea.value = output;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopyMessage();
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                textArea.remove();
+            }
+        }
+
+        function showCopyMessage() {
+            let message = document.getElementById('copyMessage');
+            if (!message) {
+                message = document.createElement('span');
+                message.id = 'copyMessage';
+                message.textContent = 'Copied successfully';
+                message.style.marginLeft = '10px';
+                message.style.color = 'green';
+                message.style.fontWeight = 'bold';
+                document.getElementById('copyButton').after(message);
+            } else {
+                message.textContent = 'Copied successfully';
+                message.style.display = 'inline';
+            }
+
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+
 </head>
 <body>
     <nav>
@@ -455,8 +543,13 @@
         <div class="input-section">
             <h2 id="inputTitle">أدخل نص JSON</h2>
             <textarea id="inputJson" rows="20" placeholder="يرجى إدخال نص JSON غير منسق"></textarea>
-            <button id="formatJsonButton" class="action-button blue-green-button">تنسيق JSON</button>
-            <div class="upload-section">
+            <button
+                id="formatJsonButton"
+                class="action-button blue-green-button"
+                style="font-weight: bold;"
+                onclick="formatAndScroll()">
+                    تنسيق JSON
+            </button>            <div class="upload-section">
                 <h2 id="uploadTitle">رفع ملف JSON</h2>
                 <label id="fileLabel" for="jsonFile">اختيار ملف</label>
                 <input type="file" id="jsonFile" accept=".json" style="display: none;">
