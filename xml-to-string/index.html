@@ -141,6 +141,21 @@
             content: '';
         }
 
+        .action-button {
+            background-color: #00796d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .action-button:hover {
+            background-color: #004d40;
+        }
+
         h1 {
             text-align: center;
             font-family: Arial, sans-serif;
@@ -210,6 +225,12 @@
             max-height: 400px;
             white-space: pre-wrap;
             word-wrap: break-word;
+            margin-bottom: 60px;
+        }
+
+        #copyButton {
+            display: block;
+            margin-top: 10px;
         }
 
         .content-box {
@@ -424,11 +445,84 @@
             }
         }
     </style>
+    <script>
+        function formatAndScroll() {
+            if (typeof formatJson === 'function') {
+                formatJson();
+            }
+
+            const outputTitle = document.getElementById('outputTitle');
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            if (outputTitle) {
+                const outputPosition = outputTitle.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                window.scrollTo({
+                    top: outputPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+    <script>
+        function copyToClipboard() {
+            const output = document.getElementById('outputJson').innerText;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(output).then(function() {
+                    showCopyMessage();
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            } else {
+                let textArea = document.createElement("textarea");
+                textArea.value = output;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopyMessage();
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                textArea.remove();
+            }
+        }
+
+        function showCopyMessage() {
+            let message = document.getElementById('copyMessage');
+            if (!message) {
+                message = document.createElement('span');
+                message.id = 'copyMessage';
+                message.textContent = 'Copied successfully';
+                message.style.marginLeft = '10px';
+                message.style.color = 'green';
+                message.style.fontWeight = 'bold';
+                document.getElementById('copyButton').after(message);
+            } else {
+                message.textContent = 'Copied successfully';
+                message.style.display = 'inline';
+            }
+
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+
 </head>
 <body>
     <nav>
         <div class="left-nav">
-            <a href="https://json-formatter.app/" target="_blank"><img src="../json-formatter-logo.jpg" alt="Logo"></a>
+            <a href="https://json-formatter.app/" target="_blank">
+                <picture>
+                    <source srcset="../json-formatter-logo.avif" type="image/avif">
+                    <source srcset="../json-formatter-logo.webp" type="image/webp">
+                    <img src="../json-formatter-logo.jpg" alt="Logo" width="30" height="30">
+                </picture>
+            </a>
             <a href="https://json-formatter.app/xml-to-string/#About">About</a>
             <a href="https://json-formatter.app/xml-to-string/#What">What</a>
             <a href="https://json-formatter.app/xml-to-string/#FAQ">FAQ</a>
@@ -496,13 +590,26 @@
     </div>
     <div style="height: 50px;"></div>
 
-    <h1><img src="../json-formatter-logo.jpg" alt="Favicon"> XML to String Converter</h1>
+    <h1>
+        <picture>
+            <source srcset="../json-formatter-logo.avif" type="image/avif">
+            <source srcset="../json-formatter-logo.webp" type="image/webp">
+            <img src="../json-formatter-logo.jpg" alt="Favicon" width="40" height="40">
+        </picture>
+          XML to String Converter
+    </h1>
 
     <div class="container">
         <div class="input-section">
             <h2 id="inputTitle">Input XML Text</h2>
             <textarea id="inputXml" rows="20" placeholder="Please enter unformatted XML text"></textarea>
-            <button id="convertXmlToStringButton" class="action-button blue-green-button">Convert XML to String</button>
+            <button
+                id="convertJsonToStringButton"
+                class="action-button blue-green-button"
+                style="font-weight: bold;"
+                onclick="formatAndScroll()">
+                    Convert XML to String
+            </button>
 
             <div class="upload-section">
                 <h2 id="uploadTitle">Upload XML File</h2>
@@ -532,7 +639,16 @@
             <h2 class="content-title">About the XML to String and JSON Formatter</h2>
             <p>The <strong>json formatter</strong> available at json-formatter.app is an innovative tool specifically designed to manage JSON (JavaScript Object Notation) data with efficiency and ease. In the context of web development, JSON is essential for the interchange of data between applications, commonly utilized in APIs. This <strong>json formatter</strong> simplifies the formatting of JSON, making it accessible and user-friendly for developers, data analysts, and anyone who frequently works with JSON data. By leveraging <strong>json-formatter.app</strong>, users can utilize a powerful <strong>json formatter</strong> that not only formats but also validates JSON data, ensuring it is well-structured and easily readable. One of the standout features of this <strong>json formatter</strong> is its ability to facilitate seamless conversions from JSON to string, making it an invaluable tool for those who need to manage data effectively. Additionally, the tool supports converting XML to string, allowing users to easily transform XML data into a string format that is suitable for further processing or integration into applications. This functionality is especially beneficial for developers dealing with XML data, as it streamlines the workflow and enhances data interoperability between systems. Furthermore, this tool is open source, inviting collaboration and improvements on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-json-formatter</a>. Best of all, it is completely free to use, empowering users to format and convert JSON to string, as well as XML to string, without any financial burden.</p>
         </div>
-        <img src="../json-formatter-logo.jpg" alt="Final Logo" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-logo.avif" type="image/avif">
+            <source srcset="../json-formatter-logo.webp" type="image/webp">
+            <img
+              src="../json-formatter-logo.jpg"
+              alt="Final Logo"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
     
     <div class="content-box features">
@@ -553,7 +669,16 @@
             <h3 class="bullet-title">Mobile-Friendly Access</h3>
             <p>The <strong>json formatter</strong> is fully responsive, catering to users who wish to format and validate JSON data on mobile devices. This mobile compatibility is particularly valuable for users preferring to work while on the move, ensuring the functionality of the <strong>json formatter</strong> remains intact across all devices. Regardless of whether you are at your desk or utilizing a mobile device, the <strong>json formatter</strong> guarantees the necessary tools are at hand for effective JSON data management, including conversions to string format. As an open-source initiative, it encourages community contributions and can be found at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-json-formatter</a>, all while being completely free for user access.</p>
         </div>
-        <img src="../json-formatter-Features.jpg" alt="Features" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-Features.avif" type="image/avif">
+            <source srcset="../json-formatter-Features.webp" type="image/webp">
+            <img
+              src="../json-formatter-Features.jpg"
+              alt="Features"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
     
     <div class="content-box" id="What">
@@ -566,7 +691,16 @@
             <p><a title="What is XML? - XML File Explained" href="https://aws.amazon.com/what-is/xml/" target="_blank">◉ What is XML? - XML File Explained</a></p>
             <p><a title="XML - wikipedia" href="https://en.wikipedia.org/wiki/XML" target="_blank">◉ XML - wikipedia</a></p>
         </div>
-        <img src="../json-formatter-what-json.jpg" alt="What json" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-what-json.avif" type="image/avif">
+            <source srcset="../json-formatter-what-json.webp" type="image/webp">
+            <img
+              src="../json-formatter-what-json.jpg"
+              alt="What json"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
     
     <div class="content-box usage">
@@ -581,7 +715,16 @@
                 <li><strong>Copy and Download</strong>: After formatting, users can utilize the one-click feature to copy their JSON or XML data or download it directly. The <strong>json formatter</strong> significantly simplifies data management. As an open-source tool, it can be enhanced and accessed at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-json-formatter</a>, and it is entirely free to utilize.</li>
             </ol>
         </div>
-        <img src="../json-formatter-how-to-use.jpg" alt="How to Use" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-how-to-use.avif" type="image/avif">
+            <source srcset="../json-formatter-how-to-use.webp" type="image/webp">
+            <img
+              src="../json-formatter-how-to-use.jpg"
+              alt="How to Use"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
     
     <div class="content-box FAQ" id="FAQ">
@@ -595,7 +738,16 @@
             <p><strong>6. Is the JSON Formatter compatible with different operating systems?</strong><br>Definitely! The <strong>json formatter</strong> works seamlessly on Windows, macOS, and Linux systems, and is compatible with all major web browsers, ensuring wide usability.</p>
             <p><strong>7. Can the JSON Formatter convert formats?</strong><br>Yes, the <strong>json formatter</strong> also supports conversions to other formats like XML and CSV, providing versatility for users who need to work with different data formats, including the conversion of JSON and XML to string.</p>
         </div>
-        <img src="../json-formatter-FAQ.jpg" alt="FAQ" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-FAQ.avif" type="image/avif">
+            <source srcset="../json-formatter-FAQ.webp" type="image/webp">
+            <img
+              src="../json-formatter-FAQ.jpg"
+              alt="FAQ"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="content-box ChangeLog" id="ChangeLog">
@@ -619,8 +771,29 @@
             <p>  - Apr. 9th : Add html-formatter Function</p>
             <p>  - Apr. 10th : Adjust Function Area</p>
             <p>  - Apr. 12th : Add Clarity Method</p>
+            <p>  - Apr. 13th : Perfect the button 'Format JSON' click for automatic redirection</p>
+            <p>  - Apr. 14th : Adjust the content of the "JSON Parser" page</p>
+            <p>  - Apr. 16th : Adjust the layout of all inner pages</p>
+            <p>  - Apr. 18th : Adjust the content of the "HTML Formatter" page</p>
+            <p>  - Apr. 20th : Add xml-to-string Function</p>
+            <p>  - Apr. 23th : Amend all img rename</p>
+            <p>  - Apr. 28th : Modify button styles and colors</p>
+            <p><strong>● May 2025</strong></p>
+            <p>  - May. 2nd : Modify button styles and colors in json-to-xml/json-to-csv</p>
+            <p>  - May. 10th : Modify button styles and colors in json-to-string</p>
+            <p>  - May. 12th : Add json-formatter github.io in Bottom</p>
+            <p>  - May. 14th : Add ads to the top and bottom of the webpage</p>
         </div>
-        <img src="../json-formatter-change-log.jpg" alt="Change Log" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-change-log.avif" type="image/avif">
+            <source srcset="../json-formatter-change-log.webp" type="image/webp">
+            <img
+              src="../json-formatter-change-log.jpg"
+              alt="Change Log"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="footer">
