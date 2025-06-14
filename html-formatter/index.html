@@ -146,6 +146,21 @@
             content: '';
         }
 
+        .action-button {
+            background-color: #00796d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .action-button:hover {
+            background-color: #004d40;
+        }
+
         h1 {
             text-align: center;
             font-family: Arial, sans-serif;
@@ -215,6 +230,12 @@
             max-height: 400px;
             white-space: pre-wrap;
             word-wrap: break-word;
+            margin-bottom: 60px;
+        }
+
+        #copyButton {
+            display: block;
+            margin-top: 10px;
         }
 
         .content-box {
@@ -429,11 +450,84 @@
             }
         }
     </style>
+    <script>
+        function formatAndScroll() {
+            if (typeof formatJson === 'function') {
+                formatJson();
+            }
+
+            const outputTitle = document.getElementById('outputTitle');
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            if (outputTitle) {
+                const outputPosition = outputTitle.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                window.scrollTo({
+                    top: outputPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+    <script>
+        function copyToClipboard() {
+            const output = document.getElementById('outputJson').innerText;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(output).then(function() {
+                    showCopyMessage();
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            } else {
+                let textArea = document.createElement("textarea");
+                textArea.value = output;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopyMessage();
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                textArea.remove();
+            }
+        }
+
+        function showCopyMessage() {
+            let message = document.getElementById('copyMessage');
+            if (!message) {
+                message = document.createElement('span');
+                message.id = 'copyMessage';
+                message.textContent = 'Copied successfully';
+                message.style.marginLeft = '10px';
+                message.style.color = 'green';
+                message.style.fontWeight = 'bold';
+                document.getElementById('copyButton').after(message);
+            } else {
+                message.textContent = 'Copied successfully';
+                message.style.display = 'inline';
+            }
+
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+
 </head>
 <body>
     <nav>
         <div class="left-nav">
-            <a href="https://json-formatter.app/" target="_blank"><img src="../json-formatter-logo.jpg" alt="Logo"></a>
+            <a href="https://json-formatter.app/" target="_blank">
+                <picture>
+                    <source srcset="../json-formatter-logo.avif" type="image/avif">
+                    <source srcset="../json-formatter-logo.webp" type="image/webp">
+                    <img src="../json-formatter-logo.jpg" alt="Logo" width="30" height="30">
+                </picture>
+            </a>
             <a href="https://json-formatter.app/html-formatter/#About">About</a>
             <a href="https://json-formatter.app/html-formatter/#What">What</a>
             <a href="https://json-formatter.app/html-formatter/#FAQ">FAQ</a>
@@ -501,8 +595,15 @@
     </div>
     <div style="height: 50px;"></div>
 
-    <h1><img src="../json-formatter-logo.jpg" alt="Favicon"> Online HTML Formatter</h1>
-    
+    <h1>
+        <picture>
+            <source srcset="../json-formatter-logo.avif" type="image/avif">
+            <source srcset="../json-formatter-logo.webp" type="image/webp">
+            <img src="../json-formatter-logo.jpg" alt="Favicon" width="40" height="40">
+        </picture>
+          Online HTML Formatter
+    </h1>
+
     <div class="language-selector">
         <label for="language"><strong>Select Language:</strong></label>
         <select id="language" onchange="changeLanguage()">
@@ -514,7 +615,13 @@
         <div class="input-section">
             <h2 id="inputTitle">Input HTML Text</h2>
             <textarea id="inputHtml" rows="20" placeholder="Please enter unformatted HTML text"></textarea>
-            <button id="formatHtmlButton" class="action-button blue-green-button">Format HTML</button>
+            <button
+                id="convertJsonToStringButton"
+                class="action-button blue-green-button"
+                style="font-weight: bold;"
+                onclick="formatAndScroll()">
+                    Format HTML
+            </button>
             <div class="upload-section">
                 <h2 id="uploadTitle">Upload HTML File</h2>
                 <label id="fileLabel" for="htmlFile">Choose File</label>
@@ -540,7 +647,16 @@
             <h2 class="content-title">About the HTML Formatter</h2>
             <p>The <strong>HTML formatter</strong> at json-formatter.app is specifically designed to facilitate the parsing and conversion of JSON (JavaScript Object Notation) to various formats efficiently. In modern web development, the ability to parse JSON is essential for seamless data interchange between applications, particularly when integrating with APIs. This free online tool simplifies the process of parsing and converting JSON, making it user-friendly for developers, data analysts, and anyone who regularly interacts with both JSON and other data formats. With <strong>json-formatter.app</strong>, users can access a powerful <strong>HTML formatter</strong> that not only formats JSON but also provides an effortless way to convert JSON to XML and CSV, ensuring that the data is structured correctly and easy to read. The versatility of this <strong>HTML formatter</strong> makes it a significant asset for users aiming to manage their JSON data transformations seamlessly. Additionally, this tool is open source and available for collaboration on <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
         </div>
-        <img src="../json-formatter-logo.jpg" alt="Final Logo" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-logo.avif" type="image/avif">
+            <source srcset="../json-formatter-logo.webp" type="image/webp">
+            <img
+              src="../json-formatter-logo.jpg"
+              alt="Final Logo"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="content-box features">
@@ -555,7 +671,16 @@
             <h3 class="bullet-title">Mobile-Friendly Access</h3>
             <p>The <strong>HTML formatter</strong> is fully responsive, allowing users to parse and validate JSON data on mobile devices with ease. This mobile access is essential for users who prefer working on the go. Whether you are at your desk or using your smartphone, the <strong>HTML formatter</strong> ensures that you have the necessary tools to handle JSON conversions effectively, maintaining the functionality of the <strong>json formatter</strong> across all devices. As an open source tool, it can be found at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</p>
         </div>
-        <img src="../json-formatter-Features.jpg" alt="Features" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-Features.avif" type="image/avif">
+            <source srcset="../json-formatter-Features.webp" type="image/webp">
+            <img
+              src="../json-formatter-Features.jpg"
+              alt="Features"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="content-box" id="What">
@@ -567,7 +692,16 @@
             <p><a title="What is HTML - geeksforgeeks" href="https://www.geeksforgeeks.org/what-is-html/" target="_blank">◉ What is HTML - geeksforgeeks</a></p>
             <p><a title="HTML: HyperText Markup Language" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">◉ HTML: HyperText Markup Language</a></p>
         </div>
-        <img src="../json-formatter-what-json.jpg" alt="What json" class="shadow">
+       <picture>
+            <source srcset="../json-formatter-what-json.avif" type="image/avif">
+            <source srcset="../json-formatter-what-json.webp" type="image/webp">
+            <img
+              src="../json-formatter-what-json.jpg"
+              alt="What json"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="content-box usage">
@@ -582,7 +716,16 @@
                 <li><strong>Copy and Download</strong>: After the conversion, utilize the one-click feature to copy your converted data or download it directly. The <strong>HTML formatter</strong> streamlines this process, making data management much easier when switching between data formats. This open source tool can be enhanced at <a href="https://github.com/mooyu-king/json-formatter" target="_blank">Github-html-formatter</a>.</li>
             </ol>
         </div>
-        <img src="../json-formatter-how-to-use.jpg" alt="How to Use" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-how-to-use.avif" type="image/avif">
+            <source srcset="../json-formatter-how-to-use.webp" type="image/webp">
+            <img
+              src="../json-formatter-how-to-use.jpg"
+              alt="How to Use"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="content-box FAQ" id="FAQ">
@@ -620,8 +763,34 @@
             <p>  - Apr. 9th : Add html-formatter Function</p>
             <p>  - Apr. 10th : Adjust Function Area</p>
             <p>  - Apr. 12th : Add Clarity Method</p>
+            <p>  - Apr. 13th : Perfect the button 'Format JSON' click for automatic redirection</p>
+            <p>  - Apr. 14th : Adjust the content of the "JSON Parser" page</p>
+            <p>  - Apr. 16th : Adjust the layout of all inner pages</p>
+            <p>  - Apr. 18th : Adjust the content of the "HTML Formatter" page</p>
+            <p>  - Apr. 20th : Add xml-to-string Function</p>
+            <p>  - Apr. 23th : Amend all img rename</p>
+            <p>  - Apr. 28th : Modify button styles and colors</p>
+            <p><strong>● May 2025</strong></p>
+            <p>  - May. 2nd : Modify button styles and colors in json-to-xml/json-to-csv</p>
+            <p>  - May. 10th : Modify button styles and colors in json-to-string</p>
+            <p>  - May. 12th : Add json-formatter github.io in Bottom</p>
+            <p>  - May. 14th : Add ads to the top and bottom of the webpage</p>
+            <p>  - May. 18th : Optimize the loading speed of images on the webpage</p>
+            <p>  - May. 23th : Add ads to the top and bottom of the /ch webpage</p>
+            <p><strong>● Jun 2025</strong></p>
+            <p>  - Jun. 3rd : Adjust the content of the "XML Formatter" page</p>
+            <p>  - Jun. 14th : Optimize the loading speed of images on the "HTML Formatter" page</p>
         </div>
-        <img src="../json-formatter-change-log.jpg" alt="Change Log" class="shadow">
+        <picture>
+            <source srcset="../json-formatter-change-log.avif" type="image/avif">
+            <source srcset="../json-formatter-change-log.webp" type="image/webp">
+            <img
+              src="../json-formatter-change-log.jpg"
+              alt="Change Log"
+              class="shadow"
+              loading="lazy"
+            >
+        </picture>
     </div>
 
     <div class="footer">
